@@ -7,8 +7,8 @@
 **环境要求:**
 
 - NVIDIA GPU， Linux， Python3.6+。
-- Pytorch 1.6.x-1.8.x （推荐Pytorch-1.8.2）
-- 相关依赖 requirements.txt。
+- Pytorch 1.6.x-1.8.x （推荐Pytorch-1.8.2）。
+- requirements.txt。
 - CUDA 10.2, 11.x (推荐10.2或11.1)。
 
 **注意：**
@@ -26,13 +26,13 @@ pip3 install torch==1.8.2+cu111 torchvision==0.9.2+cu111 torchaudio==0.8.2 -f ht
 
 ## 安装Pet
 
-1.克隆Pet仓库：
+1. 克隆Pet仓库：
 
 ```
 git clone https://github.com/BUPT-PRIV/Pet-dev.git
 ```
 
-2.安装 requirements.txt：
+2. 安装 requirements.txt：
 
 ```
 cd Pet-dev
