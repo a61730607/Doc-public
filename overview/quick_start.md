@@ -13,7 +13,12 @@
 
 ![image](../image_source/cifar10_pic.png)
 
-* 路径：将数据已经直接或以软连接的形式存放在`$Pet/data`文件路径下，文件结构如下：
+```
+wget https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz
+tar -xvf cifar-10-python.tar.gz
+```
+
+* 路径：将数据以软连接的形式或直接存放到`$Pet/data`文件路径下，文件结构如下：
 
 ```
 cifar
@@ -33,56 +38,86 @@ cifar
 ln -s $CIFAR $Pet/data
 ```
 
+## 训练
 
-## 预训练模型
+使用Pet训练和测试CIFAR10分类模型时，需要指定一个YAML文件，该文件里包含了模型所需的参数。Pet的配置系统详见：[配置系统](../usage/configs_zh.md)。这里以[$Pet/cfgs/tutorials/resnet110_Cifar10.yaml](https://github.com/BUPT-PRIV/Pet-dev/blob/main/cfgs/tutorials/resnet110_Cifar10.yaml)配置文件为例进行介绍。
 
-如需迁移其他网络的训练参数来进行当前任务的训练，请将要进行迁移的网络模型放到`$Pet/weights`路径下。作为基本的分类任务，Pet在训练CIFAR数据时，选择了直接随机初始化。
+启动训练：
 
-## 分类训练和测试
-
-使用Pet训练和测试CIFAR10分类模型时，需要指定一个YAML文件，该文件里包含了所有训练和测试时使用到的可以调节的超参数，这里以[$Pet/cfgs/cls/cifar/resnext29-8x64d_cifar10.yaml](https://github.com/BUPT-PRIV/Pet-dev/blob/main/cfgs/vision/Cifar/resnext29-8x64d_cifar10.yaml)为例进行介绍。
-
-训练用法示例：
-
-```
+```bash
 cd $Pet
-
-python tools/train_net_all.py --cfg=cfgs/vision/Cifar/resnext29-8x64d_cifar10.yaml
+python tools/train_net_all.py --cfg cfgs/tutorials/resnet110_Cifar10.yaml # 默认8卡GPU训练
+python tools/train_net_all.py --cfg cfgs/tutorials/resnet110_Cifar10.yaml --gpu_id 0 # 单GPU训练
 ```
 
 在训练正常运行时，会在控制台输出如下的日志信息。
 
-```
-[Training][resnext29-8x64d_cifar10.yaml][epoch: 1/300][iter: 20/196][lr: 0.100000][eta: 1 day, 1:28:29]
-      total_loss: 2.264606 (2.198514), iter_time: 0.4097 (1.5602), data_time: 0.0019 (0.0021)
-      acc1: 22.2656 (19.7266), acc5: 71.4844 (70.0586)
-[Training][resnext29-8x64d_cifar10.yaml][epoch: 1/300][iter: 40/196][lr: 0.100000][eta: 15:49:45]
-      total_loss: 1.991784 (2.129857), iter_time: 0.4080 (0.9698), data_time: 0.0022 (0.0021)
-      acc1: 23.4375 (22.0312), acc5: 81.2500 (74.6777)
-[Training][resnext29-8x64d_cifar10.yaml][epoch: 1/300][iter: 60/196][lr: 0.100000][eta: 12:43:38]
-      total_loss: 1.797434 (2.069275), iter_time: 0.4100 (0.7800), data_time: 0.0020 (0.0021)
-      acc1: 30.8594 (24.0299), acc5: 84.7656 (77.0508)
-[Training][resnext29-8x64d_cifar10.yaml][epoch: 1/300][iter: 80/196][lr: 0.100000][eta: 11:11:46]
-      total_loss: 1.910455 (2.017684), iter_time: 0.4116 (0.6864), data_time: 0.0020 (0.0021)
-      acc1: 27.7344 (25.7080), acc5: 82.0312 (78.8721)
-      ......
+```bash
+[10-26 11:41:27] |-[resnet110.yaml]-[iter: 20/63960]-[lr: 0.100000]-[eta: 2:49:11]
+                 |-[max_mem: 169M]-[iter_time: 0.1588]-[data_time: 0.0239]
+                 |-[total loss: 2.2620]
+[10-26 11:41:29] |-[resnet110.yaml]-[iter: 40/63960]-[lr: 0.100000]-[eta: 2:28:50] 
+                 |-[max_mem: 169M]-[iter_time: 0.1397]-[data_time: 0.0105]
+                 |-[total loss: 2.0806]
+[10-26 11:41:32] |-[resnet110.yaml]-[iter: 60/63960]-[lr: 0.100000]-[eta: 2:23:09]
+                 |-[max_mem: 169M]-[iter_time: 0.1344]-[data_time: 0.0105]
+                 |-[total loss: 2.0089]
+[10-26 11:41:34] |-[resnet110.yaml]-[iter: 80/63960]-[lr: 0.100000]-[eta: 2:20:38]
+                 |-[max_mem: 169M]-[iter_time: 0.1321]-[data_time: 0.0105]
+                 |-[total loss: 1.9373]
+[10-26 11:41:37] |-[resnet110.yaml]-[iter: 100/63960]-[lr: 0.100000]-[eta: 2:22:06]
+                 |-[max_mem: 169M]-[iter_time: 0.1335]-[data_time: 0.0105]
+                 |-[total loss: 1.9134]
+[10-26 11:41:40] |-[resnet110.yaml]-[iter: 120/63960]-[lr: 0.100000]-[eta: 2:23:10]
+                 |-[max_mem: 169M]-[iter_time: 0.1346]-[data_time: 0.0105]
+                 |-[total loss: 1.8703]
+[10-26 11:41:43] |-[resnet110.yaml]-[iter: 140/63960]-[lr: 0.100000]-[eta: 2:23:25]
+                 |-[max_mem: 169M]-[iter_time: 0.1348]-[data_time: 0.0130]
+                 |-[total loss: 1.8468]
+[10-26 11:41:45] |-[resnet110.yaml]-[iter: 160/63960]-[lr: 0.100000]-[eta: 2:23:26]
+                 |-[max_mem: 169M]-[iter_time: 0.1349]-[data_time: 0.0104]
+                 |-[total loss: 1.8268]
+[10-26 11:41:48] |-[resnet110.yaml]-[iter: 180/63960]-[lr: 0.100000]-[eta: 2:23:09]
+                 |-[max_mem: 169M]-[iter_time: 0.1347]-[data_time: 0.0110]
+                 |-[total loss: 1.7823]
+[10-26 11:41:51] |-[resnet110.yaml]-[iter: 200/63960]-[lr: 0.100000]-[eta: 2:22:46]
+                 |-[max_mem: 169M]-[iter_time: 0.1343]-[data_time: 0.0111]
+                 |-[total loss: 1.7527]
+                 
+······
+
+[10-26 14:12:13] INFO: Saving checkpoint done. And copy "model_latest.pth" to "model_iter63960.pth".
+[10-26 14:12:13] INFO: Overall training speed: 63961 iterations in 2:17:49 (0.129293 s / it)
+[10-26 14:12:13] INFO: Total training time: 2:18:23 (0:00:34 on hooks)
 ```
 
-训练结束后，会将最后一次训练的模型以及效果最好的模型保存到`$Pet/ckpts/cls/cifar`路径下。接下来开始`$Pet/tools/cls/test_net.py`进行测试功能过程的介绍。
+训练结束后，会将最终模型保存到`$Pet/ckpts/tutorials/Cifar/resnet110`路径下。
+
+### 测试评估
+
+接下来通过`$Pet/tools/test_net_all.py`进行测试评估。
 
 测试用法示例：
 
-```
-cd $Pet
-
-python tools/test_net_all.py--cfg cfgs/vision/Cifar/resnext29-8x64d_cifar10.yaml
+```bash
+python tools/test_net_all.py --cfg cfgs/tutorials/resnet110_Cifar10.yaml # 8卡评估
+python tools/test_net_all.py --cfg cfgs/tutorials/resnet110_Cifar10.yaml --gpu_id 0 # 单GPU评估
 ```
 
 测试结果：
 
-```
-INFO:pet.utils.misc:[Testing][range:1-250 of 250][249/250][120.903s = 120.747s + 0.154s + 0.002s][eta: 0:02:00][acc1:77.48% | acc5: 93.75%]
-INFO:pet.utils.misc:[Testing][range:1-250 of 250][250/250][121.293s = 121.138s + 0.154s + 0.002s][eta: 0:00:00][acc1:77.44% | acc5: 93.75%]
-INFO:pet.utils.misc:val_top1: 77.4360% | val_top5: 93.7520%
+```bash
+[10-26 14:47:03] INFO: Loading from weights: ckpts/tutorials/Cifar/resnet110/model_latest.pth.
+[10-26 14:47:03] INFO: Creating dataset: cifar10.
+[10-26 14:47:04] INFO: [Testing][range:1-79 of 10000][10/79][0.049s = 0.021s + 0.029s + 0.000s][eta: 0:00:03]
+[10-26 14:47:04] INFO: [Testing][range:1-79 of 10000][20/79][0.041s = 0.013s + 0.027s + 0.000s][eta: 0:00:02]
+[10-26 14:47:04] INFO: [Testing][range:1-79 of 10000][30/79][0.037s = 0.011s + 0.026s + 0.000s][eta: 0:00:01]
+[10-26 14:47:05] INFO: [Testing][range:1-79 of 10000][40/79][0.036s = 0.010s + 0.026s + 0.000s][eta: 0:00:01]
+[10-26 14:47:05] INFO: [Testing][range:1-79 of 10000][50/79][0.036s = 0.009s + 0.027s + 0.000s][eta: 0:00:01]
+[10-26 14:47:05] INFO: [Testing][range:1-79 of 10000][60/79][0.036s = 0.009s + 0.026s + 0.000s][eta: 0:00:00]
+[10-26 14:47:06] INFO: [Testing][range:1-79 of 10000][70/79][0.035s = 0.009s + 0.026s + 0.000s][eta: 0:00:00]
+[10-26 14:47:06] INFO: [Testing][range:1-79 of 10000][79/79][0.034s = 0.008s + 0.026s + 0.000s][eta: 0:00:00]
+[10-26 14:47:06] INFO: Total inference time: 3.135s
+[10-26 14:47:06] INFO: test_acc1: 94.28% | test_acc5: 99.88%
 ```
 
