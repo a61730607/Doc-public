@@ -45,7 +45,7 @@ Pet默认支持Cifar数据集，当您想要使用Cifar数据集进行您的模�
 
 直接在Pet中运行以下代码开始训练您的模型 
 
-  ```
+  ```shell
   # 指定GPU参数进行训练
   cd $Pet
   
@@ -58,7 +58,7 @@ Pet默认支持Cifar数据集，当您想要使用Cifar数据集进行您的模�
 
 训练好的模型自动存储在指定位置（`$Pet/ckpts/tutorials/Cifar/resnet110`），对应的模型有对应的model_latest.pth文件，在Pet中运行以下代码开始测试您的模型
 
-  ```
+  ```shell
   # 指定GPU参数进行训练
   cd $Pet
   
@@ -75,7 +75,7 @@ Pet以yaml文件格式定义并存储本次实验配置信息，并根据任务�
 
 此yaml包含的大致配置信息如下（所有默认基础配置可在pet/lib/config/目录下查询）
 
-```python
+```yaml
 MISC:# 基础配置 例如GPU数量
     ...
 MODEL:# 模型配置 例如所采用的模型、网络结构
@@ -100,7 +100,7 @@ CIFAR数据内容和类别如下：
 
 ![image](../image_source/cifar10_pic.png)
 
-```
+```shell
 wget https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz
 tar -xvf cifar-10-python.tar.gz
 ```
@@ -109,7 +109,7 @@ CIFAR-10 是由 Hinton 的学生 Alex Krizhevsky 和 Ilya Sutskever 整理的一
 
 yaml文件中关于数据集部分的配置如下
 
-```python
+```yaml
 DATA:
   DATASET_TYPE: "cifar_dataset"# 指定数据集类型
   PIXEL_MEAN: (0.4914, 0.4822, 0.4465)# 像素平均值（BGR顺序）作为元组
@@ -124,7 +124,7 @@ DATA:
 
 以`$Pet/cfgs/tutorials/resnet110_Cifar10.yaml`为例，其包含了基础配置、模型配置，模型配置主要包括骨干网络配置与结构设置，以及对应任务的Head模块定义等基本配置信息，我们可以通过这些基础信息构建适应任务的模型。全部模型部分构建的yaml文件如下：
 
-```python
+```yaml
 MODEL:
   BACKBONE: "cifar_resnet"   #指定数据集类型
   NECK: ""
@@ -144,7 +144,7 @@ MODEL:
 
 ResNet110主干网络模型构建的配置信息如下,指定数据集类型和使用的主干网络，设置dropout的参数。
 
-```python
+```yaml
 MODEL:
   BACKBONE: "cifar_resnet"   #指定数据集类型
   CIFAR:
@@ -157,7 +157,7 @@ MODEL:
 
 在yaml文件中设定任务关键字为CLS，表明任务为分类，`ONEHOT_ON: True`表明分类任务使用One_Hot方法，yaml文件中对这部分进行了以下定义：
 
-```python
+```yaml
 ...
 GLOBAL_HEAD:
     CLS:                     #指定 head 部分为分类
@@ -217,7 +217,7 @@ class GeneralizedCNN(nn.Module):
 
 以`$Pet/cfgs/tutorials/resnet110_Cifar10.yaml`为例，在模型训练中的参数构建中指定了所用训练集等训练数据。关于数据加载的详细教程与解释详见 [此处](../../usage/data_zh.md)
 
-```python
+```yaml
 TRAIN:# 训练参数设定
 ...
   DATASETS: ("cifar10",)#指定训练集
@@ -229,7 +229,7 @@ TRAIN:# 训练参数设定
 
 yaml文件中规定了优化器对基本学习率进行了设定，在优化器中对优化器类型、基本学习率、超参数进行了指定；在调度器中设定了最大迭代次数、SGD迭代次数、调度器类型。关于优化器与调度器的配置信息如下：
 
-```python
+```yaml
 SOLVER:
   OPTIMIZER:
     TYPE: "SGD"    # 指定优化器类型为SGD
@@ -291,7 +291,7 @@ SOLVER.SNAPSHOT_EPOCHS = 50
 
 训练基本参数设定，包括batch size与分割数：
 
-```python
+```yaml
 TRAIN:# 训练参数设定
 ...
   BATCH_SIZE: 128 # 训练最小batch size
@@ -302,7 +302,7 @@ TRAIN:# 训练参数设定
 
 预处理参数设定，包括图像增强，随机裁剪等参数设定：
 
-```python
+```yaml
   ...
   TRANSFORMS: ("resize", "random_crop", "random_horizontal_flip", "to_tensor", "normalize")   # 指定数据增强的方式
   RESIZE:        # resize的参数设置
@@ -370,7 +370,7 @@ TRAIN:# 训练参数设定
 
 以`$Pet/cfgs/tutorials/resnet110_Cifar10.yaml`为例，在模型测试中的参数构建中指定了所用测试集等训练数据。关于数据加载的详细教程与解释详见 [此处](../../usage/solver_zh.md)
 
-```python
+```yaml
 TEST:# 测试参数设定
   DATASETS: ("cifar10",)# 指定测试集
 ```
@@ -383,7 +383,7 @@ TEST:# 测试参数设定
 
 ​        测试基本参数指定：
 
-```python
+```yaml
 TEST:# 测试参数设定
 ...
   SIZE_DIVISIBILITY: 8# 指定每一个整理批次的分割数
@@ -392,7 +392,7 @@ TEST:# 测试参数设定
 
 ​		测试过程中预处理参数指定，此处包括图像大小调整参数:
 
-```python
+```yaml
 ...
 RESIZE:
   SCALE: 32  # 测试期间resize图像大小
@@ -430,7 +430,7 @@ CENTER_CROP:
 
 关于评估部分的详细参数配置解释参见`$Pet/lib/config/config.py`
 
-```python
+```yaml
 EVAL:# 验证
   RECORD: [{"time": "20210801", "recorder": "user", "version": "0.7a","semseg": "mIoU/PixelACC/MeanACC/MeanF1Score:42.09/79.99/53.03/55.95",
             "mark": ""}]# 测试记录存储，"time":测试时间；"recorder":测试者；"version":所用版本；"semseg": "mIoU/PixelACC/MeanACC/MeanF1Score:42.09/79.99/53.03/55.95":评估参数
