@@ -371,8 +371,8 @@ TRAIN:# 训练参数设定
 以`$Pet/cfgs/tutorials/resnet110_Cifar10.yaml`为例，在模型测试中的参数构建中指定了所用测试集等训练数据。关于数据加载的详细教程与解释详见 [此处](../../usage/solver_zh.md)
 
 ```yaml
-TEST:# 测试参数设定
-  DATASETS: ("cifar10",)# 指定测试集
+TEST:  # 测试参数设定
+  DATASETS: ("cifar10",)  # 指定测试集
 ```
 
 ### 7.2、模型测试
@@ -398,7 +398,7 @@ RESIZE:
   SCALE: 32  # 测试期间resize图像大小
   MAX_SIZE: -1
 CENTER_CROP:
-  CROP_SCALES: (32, 32)# 测试期间crop图像大小
+  CROP_SCALES: (32, 32)  # 测试期间crop图像大小
 ```
 
 ​        关于模型测试的主要步骤包括创建模型、加载模型、创建测试数据集与加载器、构建测试引擎等。此处列出部分源码作为解读，详细参见`$pet/tools/vision/test_net.py`。
@@ -431,14 +431,25 @@ CENTER_CROP:
 关于评估部分的详细参数配置解释参见`$Pet/lib/config/config.py`
 
 ```yaml
-EVAL:# 验证
-  RECORD: [{"time": "20210801", "recorder": "user", "version": "0.7a","semseg": "mIoU/PixelACC/MeanACC/MeanF1Score:42.09/79.99/53.03/55.95",
-            "mark": ""}]# 测试记录存储，"time":测试时间；"recorder":测试者；"version":所用版本；"semseg": "mIoU/PixelACC/MeanACC/MeanF1Score:42.09/79.99/53.03/55.95":评估参数
+EVAL:  # 验证
+  RECORD: [{"time": "20210814", "recorder": "user", "version": "0.7a",
+            "cls": "top1:94.24",
+            "mark": "FLOPs: 247.6M; Params: 1.70M"}]
+            #  测试记录存储，"time":测试时间；"recorder":测试者；"version": 所用版本；"cls": "top1:94.24":评估参数
 ```
 
 - **可视化结果**
 
-  ![semseg](..\..\image_source\semsegcut.png)
+分类模型暂不提供可视化结果，提供打印结果。
+
+  例如，输入一张鸟的图片，会得到如下的打印信息。
+  ```
+  bird    1.0
+  dog     0.0
+  automobile      0.0
+  truck   0.0
+  frog    0.0
+  ```
 
 ### 参考文献
 
