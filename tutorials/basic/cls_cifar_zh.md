@@ -111,7 +111,7 @@ yaml文件中关于数据集部分的配置如下
 
 ```yaml
 DATA:
-  DATASET_TYPE: "cifar_dataset"# 指定数据集类型
+  DATASET_TYPE: "cifar_dataset" # 指定数据集类型
   PIXEL_MEAN: (0.4914, 0.4822, 0.4465)# 像素平均值（BGR顺序）作为元组
   PIXEL_STD: (0.2023, 0.1994, 0.2010)# 像素标准差（BGR顺序）作为元组
 ```
@@ -126,7 +126,7 @@ DATA:
 
 ```yaml
 MODEL:
-  BACKBONE: "cifar_resnet"   #指定数据集类型
+  BACKBONE: "cifar_resnet"   #骨干网络配置
   NECK: ""
   GLOBAL_HEAD:
     CLS:                     #指定 head 部分为分类
@@ -218,9 +218,9 @@ class GeneralizedCNN(nn.Module):
 以`$Pet/cfgs/tutorials/resnet110_Cifar10.yaml`为例，在模型训练中的参数构建中指定了所用训练集等训练数据。关于数据加载的详细教程与解释详见 [此处](../../usage/data_zh.md)
 
 ```yaml
-TRAIN:# 训练参数设定
+TRAIN:  # 训练参数设定
 ...
-  DATASETS: ("cifar10",)#指定训练集
+  DATASETS: ("cifar10",)  #指定训练集
 ```
 
 ### 6.2、优化器与调度器的构建
