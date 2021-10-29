@@ -1,78 +1,96 @@
-## 在MSCOCO2017数据集上训练Faster R-CNN模型
+# 在MSCOCO2017数据集上训练Faster R-CNN模型
 
-### 一、介绍
+## 1、介绍
 
-本教程将介绍使用Pet训练以及测试Faster R-CNN模型进行目标检测的主要步骤，在此我们会指导您如何通过组合Pet的提供组件来训练Faster R-CNN模型，在此我们仅讲解组件的调用，部分实现细节请查阅系统组件的相应部分。
+​        本教程将介绍使用Pet训练以及测试Faster R-CNN模型进行目标检测的主要步骤，在此我们会指导您如何通过组合Pet的提供组件来训练Faster R-CNN模型，在此我们仅讲解组件的调用，部分实现细节请查阅系统组件的相应部分。
 
-在阅读本教程的之前我们强烈建议您阅读原始论文[Faster R-CNN[1]](https://arxiv.org/abs/1506.01497)以了解更多关于Faster R-CNN的算法原理。MSCOCO2017数据集可通过[官方链接](https://cocodataset.org/#download)下载。
+​        在阅读本教程的之前我们强烈建议您阅读原始论文[Faster R-CNN[1]](https://arxiv.org/abs/1506.01497)以了解更多关于Faster R-CNN的算法原理。
 
 
-### 二、快速开始
+## 2、快速开始
 
-如果您具有丰富的目标检测算法的研究经验，您也可以直接在Pet中运行`$Pet/tools/train_net_all.py` 或 `$Pet/tools/test_net_all.py` 脚本立即开始训练或测试您的Faster R-CNN模型。
+### 2.1、数据准备
 
-### 三、用法示例
+​​		        关于数据放置与数据制备的详细说明参见 [此处](../../usage/data_zh.md)
 
-* **训练**
+- **数据放置**
 
-使用8块GPU在MSCOCO2017上训练一个端到端的Faster R-CNN模型：  
-```python
-cd $Pet
-python tools/train_net_all.py --cfg cfgs/vision/COCO/e2e_faster-impr_rcnn_R-50-C4_1x_ms.yaml
+  ​        Pet默认支持MSCOCO2017数据集，当您想要使用MSCOCO2017数据集进行您的模型训练和测试时，需要您将下载好的MSCOCO2017数据集放在`$Pet/data/COCO`文件夹下，文件夹结构如下
+  ```
+  COCO
+  ├── annotations
+  ├── train2017
+  └── val2017
+  ```
+
+- **数据格式**
+
+  ​        对于不同的视觉任务，Pet支持在多种数据集上进行模型的训练和测试，并且规定了Pet标准的数据集源文件的文件结构与标注的格式。
+
+- **预训练模型权重/测试模型权重下载**
+
+  ​        从Model Zoo中下载所需要的权重文件到"/ckpts/"相应目录下
+
+### 2.2、训练与测试
+​        如果您具有丰富的目标检测算法的研究经验，您也可以直接在Pet中运行`$Pet/tools/vision/train_net.py`脚本立即开始训练您的Faster R-CNN模型。
+
+- **训练**
+
+  ​        直接在Pet中运行以下代码开始训练您的模型 
+
+  ```shell
+  # 指定GPU参数进行训练
+  cd $Pet
+  python tools/vision/train_net.py --cfg cfgs/vision/COCO/e2e_faster-impr_rcnn_R-50-C4_1x_ms.yaml --gpu_id 0,1,2,3
+  
+  # --gpu_id参数为指定训练所用gpu，不指定默认训练所用gpu为8卡
+  ```
+
+- **测试**
+
+  ​        训练好的模型自动存储在指定位置（`$Pet/ckpts/vision/COCO/e2e_faster-impr_rcnn_R-50-C4_1x_ms`），对应的模型有对应的model_latest.pth文件，在Pet中运行以下代码开始测试您的模型
+
+  ```shell
+  # 指定GPU参数进行训练
+  cd $Pet
+  python tools/vision/test_net.py --cfg cfgs/vision/COCO/e2e_faster-impr_rcnn_R-50-C4_1x_ms.yaml --gpu_id 0,1,2,3
+  
+  # --gpu_id参数为指定测试所用gpu，不指定默认测试所用gpu为8卡
+  ```
+
+
+
+
+## 3、实验配置文件
+
+​        Pet以yaml文件格式定义并存储本次实验配置信息，并根据任务类型和所用数据集等信息将其保存在cfgs目录下相应位置。关于配置系统（cfgs）的详细说明参见 [此处](../../usage/configs_zh.md)。故在进行任何与模型训练和测试有关的操作之前，需要指定一个yaml文件，明确在训练时对数据集、模型结构、优化策略以及训练时可以调节的重要参数的设置，本教程以`$Pet/cfgs/vision/COCO/e2e_faster-impr_rcnn_R-50-C4_1x_ms.yaml`模型为例讲解训练过程中所需要的关键配置，这套配置将指导Faster R-CNN模型以及测试的全部步骤与细节，全部参数设置详见 [此处]($Pet/cfgs/vision/COCO/e2e_faster-impr_rcnn_R-50-C4_1x_ms.yaml)
+
+​        此yaml包含的大致配置信息如下（所有默认基础配置可在pet/lib/config/目录下查询）
+
+```yaml
+MISC: # 基础配置 例如GPU数量
+    ...
+MODEL: # 模型配置 例如所采用的模型、网络结构
+    ...
+SOLVER: # 优化器及调度器配置 例如学习率、迭代次数、调度器类型等
+    ...
+DATA: # 数据相关配置  例如数据加载路径、标注格式等
+    ...
+TRAIN: # 训练配置  例如指定权重文件路径、指定训练集等
+    ...
+TEST: # 测试配置 例如指定测试集，指定图像大小调整的参数等
+    ...
 ```
 
-指定特定的GPU在MSCOCO上训练一个端到端的Faster R-CNN模型：
-```python
-cd $Pet
-python tools/train_net_all.py --cfg cfgs/vision/COCO/e2e_faster-impr_rcnn_R-50-C4_1x_ms.yaml --gpu_id 0,1,2,3
-```
-
-* **测试**
-
-```python
-cd $Pet
-python tools/test_net_all.py --cfg ckpts/vision/COCO/e2e_faster-impr_rcnn_R-50-C4_1x_ms.yaml
-```
-
-```python
-cd $Pet
-python tools/test_net_all.py --cfg ckpts/vision/COCO/e2e_faster-impr_rcnn_R-50-C4_1x_ms.yaml --gpu_id 0,1
-```
 
 
-### 四、构建实验配置文件
+## 4、数据集准备与介绍
 
-在进行任何与模型训练和测试有关的操作之前，需要先指定一个YAML文件，明确在训练时对数据集、模型结构、优化策略以及其他重要参数的需求与设置，本教程以 `$Pet/cfgs/vision/COCO/e2e_faster-impr_rcnn_R-50-C4_1x_ms.yaml` 为例，讲解训练过程中所需要的关键配置，该套配置将指导此Faster R-CNN模型训练以及测试的全部步骤和细节，全部参数设置请见$Pet/cfgs/vision/COCO/e2e_faster-impr_rcnn_R-50-C4_1x_ms.yaml。
+​        Pet默认支持MSCOCO2017数据集，其余Pet支持的数据集详见 [此处](../../usage/data_zh.md)。确保MSCOCO2017数据集已经存放在您的硬盘中并整理好文件结构。
 
-Pet以yaml文件格式定义并存储本次实验配置信息，并根据任务类型和所用数据集等信息将其保存在cfgs目录下的相应位置。以 `$Pet/cfgs/vision/COCO/e2e_faster-impr_rcnn_R-50-C4_1x_ms.yaml` 为例，其包含的大致配置信息如下(所有默认基础配置可在 `$Pet/pet/lib/config/` 目录下查询)：
+​        [MSCOCO](https://cocodataset.org/) [2] 是微软发布的一个大型图像数据集，专为对象检测、分割、人体关键点检测、语义分割和字幕生成而设计。
 
-```python
-MISC: # 基础配置
-  ...
-MODEL: # 模型配置
-  ...
-SOLVER: # 优化器及调度器配置
-  ...
-DATA: # 数据相关配置
-  ...
-TRAIN: # 训练配置
-  ...
-TEST: # 测试配置
-  ...
-```
-
-### 五、数据集准备和介绍
-微软发布的MSCOCO数据库是一个大型图像数据集，专为对象检测、分割、人体关键点检测、语义分割和字幕生成而设计。
-
-![image](https://cocodataset.org/images/detection-splash.png)
-
-MSCOCO数据库的网址是:
-* MSCOCO数据集主页：[https://cocodataset.org/](https://cocodataset.org/)
-* Github网址：[https://github.com/cocodataset/](https://github.com/cocodataset/)
-
-[cocoapi](https://github.com/cocodataset/cocoapi/)提供了Matlab，Python和Lua的调用接口。该API可以提供完整的图像标签数据的加载、分析和可视化。此外，网站还提供了数据相关的文章和教程。
-
-在使用MSCOCO数据库提供的API和demo之前, 需要首先下载MSCOCO的图像和标签数据（类别标志、类别数量区分、像素级的分割等），Pet需要从MSCOCO中下载以下内容：
+​        数据集组成
 
 | 文件名 | 大小 |
 | :-----: | :-: |
@@ -80,160 +98,44 @@ MSCOCO数据库的网址是:
 | [val2017.zip](http://images.cocodataset.org/zips/val2017.zip) | 1GB 
 | [annotations_trainval2017.zip](http://images.cocodataset.org/annotations/annotations_trainval2017.zip) | 241MB |
 
-
-* 图像数据下载到`$Pet/data/COCO/`文件夹中
-* 标签数据下载到`$Pet/data/COCO/annotations/`文件夹中
-
-```python
-COCO
-├── annotations
-├── train2017
-└── val2017
-```
-
-
-### 六、数据加载
-yaml配置文件的数据集部分信息(更多默认配置参考`$Pet/pet/lib/config/data.py`)：
-```python
-## $Pet/cfgs/vision/COCO/e2e_faster-impr_rcnn_R-50-C4_1x_ms.yaml
+​        yaml文件中关于数据集部分的配置如下
+```yaml
 DATA:
-  # yaml配置
-  PIXEL_MEAN: (0.485, 0.456, 0.406)
-  PIXEL_STD: (0.00392, 0.00392, 0.00392)
-  # 默认配置，在pet/lib/config/data.py中
-  DATASET_TYPE = "coco_dataset"
-...
-TRAIN:
-  ...
-  DATASETS: ("coco_2017_train",)
-  SIZE_DIVISIBILITY: 0
-  RESIZE:
-    SCALES: (640, 672, 704, 736, 768, 800)
-    MAX_SIZE: 1333
-TEST:
-  DATASETS: ("coco_2017_val",)
-  RESIZE:
-    SCALE: 800
-    MAX_SIZE: 1333
+  PIXEL_MEAN: (0.485, 0.456, 0.406)# 像素平均值（BGR顺序）作为元组
+  PIXEL_STD: (0.00392, 0.00392, 0.00392)# 像素标准差（BGR顺序）作为元组
+
+```
+​        关于数据集部分默认配置如下
+```python  
+# 默认配置
+DATASET_TYPE = "coco_dataset"# 指定数据集类型
 ```
 
-根据配置文件构建训练数据集和加载器,核心调用`$Pet/pet/vision/datasets/dataset.py`下的`build_dataset`和`make_{train/test}_data_loader`
-```python
-## $Pet/tools/vision/train_net.py
-from pet.vision.datasets.dataset import build_dataset, make_train_data_loader
-from pet.vision.datasets.dataset import build_dataset, make_test_data_loader
+​        关于数据加载的详细教程与解释详见 [此处](../../usage/data_zh.md)
 
-# 构建训练数据集和加载器
-dataset = build_dataset(cfg, is_train=True)
-start_iter = checkpointer.checkpoint['scheduler']['iteration'] if checkpointer.resume else 1
-train_loader = make_train_data_loader(cfg, dataset, start_iter=start_iter)
-```
-```python
-## $Pet/tools/vision/train_net.py
 
-# 构建测试数据集和加载器
-dataset = build_dataset(cfg, is_train=False)
-test_loader = make_test_data_loader(cfg, dataset)
-```
 
-构建数据集的核心是通过解析配置文件相关参数，构建`cfg.DATA.DATASET_TYPE`对应的数据集类(相关代码在`$Pet/pet/lib/data/datasets/`)，构建数据集的核心代码如下：
-```python
-## $Pet/pet/vision/datasets/dataset.py
-from pet.lib.data.datasets import (CifarDataset, COCODataset,
-                                   COCOInstanceDataset, ConcatDataset,
-                                   ImageFolderDataset)
-def build_dataset(cfg, is_train=True):
-    dataset_list = cfg.TRAIN.DATASETS if is_train else cfg.TEST.DATASETS # 要读取的数据集list，如：("coco_2017_train",)/("coco_2017_val",)
+## 5、模型构建
 
-    ann_types = set()
-    if cfg.MODEL.HAS_BOX: # infer_cfg():cfg.MODEL.GLOBAL_HEAD.DET.RPN_ON = True -> cfg.MODEL.HAS_BOX = True
-        ann_types.add('bbox') # 要加载的标注类型
-    ...
+​        以`$Pet/cfgs/vision/COCO/e2e_faster-impr_rcnn_R-50-C4_1x_ms.yaml`为例，其包含了基础配置、模型配置，模型配置主要包括骨干网络配置与结构设置，以及对应任务的Head模块定义等基本配置信息，我们可以通过这些基础信息构建适应任务的模型。全部模型部分构建的yaml文件如下：
 
-    # 根据cfg.DATA.DATASET_TYPE映射到对应的数据集类："coco_dataset" -> COCODataset
-    dataset_obj = DATASET_TYPES[cfg.DATA.DATASET_TYPE]
-    transforms = build_transforms(cfg, is_train) # 根据配置信息，对数据做预处理变换
-    transforms.check_ann_types(ann_types)
-
-    ...
-
-    datasets = [] # 保存所有读取下载的数据集，有可能是多个数据集，用list存储
-
-    # 为便于阅读，省去部分异常判断，如：未定义的数据集名称、图像目录或标注文件不存在、指定标注类型数据集不支持等
-    for dataset_name in dataset_list:
-        root = get_im_dir(dataset_name) # 获取数据集图片目录路径
-        ann_file = get_ann_fn(dataset_name) # 获取标注文件路径
-        ...
-
-        # 根据上述对配置参数的解析，创建具体的数据集类对象
-        dataset = dataset_obj(root, ann_file, ann_types, ann_fields, 
-                              transforms=transforms,
-                              is_train=is_train,
-                              filter_invalid_ann=is_train,
-                              filter_empty_ann=is_train,
-                              filter_crowd_ann=True,    # TO Check, TODO: filter ignore
-                              bbox_file=bbox_file,
-                              image_thresh=image_thresh,
-                              mosaic_prob=mosaic_prob)
-        datasets.append(dataset) # 加入该数据集类对象到数据集列表
-
-        logging_rank(f"Creating dataset: {dataset_name}.")
-
-    # concatenate all datasets into a single one
-    if len(datasets) > 1: # 如果要下载的数据集大于1，将对多个数据集进行拼接
-        dataset = ConcatDataset(datasets)
-        logging_rank(f"Concatenate datasets: {dataset_list}.")
-    else:
-        dataset = datasets[0]
-
-    # 返回创建处理后的数据集类对象
-    return dataset
-```
-
-构建数据加载器的核心调用是torch.utils.data.DataLoader,根据配置参数解析，确定 DataLoader 的各参数，包括batch_size,sampler,collect_fn等，sampler和collate_fn的自定义实现分别在 `$Pet/pet/lib/data/samplers` 和 `$Pet/pet/lib/data/collate_batch.py`。数据集加载分训练和测试两种情况，大致逻辑相似，为便于阅读，此处仅以测试集加载函数作为示例：
-```python
-## $Pet/pet/vision/datasets/dataset.py 
-from torch.utils.data import BatchSampler, DataLoader, DistributedSampler
-from pet.lib.data.collate_batch import BatchCollator
-from pet.lib.data.samplers import (GroupedBatchSampler,
-                                   IterationBasedBatchSampler,
-                                   RepeatFactorTrainingSampler)
-
-def make_test_data_loader(cfg, datasets):
-    ims_per_gpu = cfg.TEST.IMS_PER_GPU
-    test_sampler = DistributedSampler(datasets, shuffle=False)
-    num_workers = cfg.DATA.LOADER_THREADS
-    collator = BatchCollator(-1)
-    data_loader = DataLoader(
-        datasets,
-        batch_size=ims_per_gpu,
-        shuffle=False,
-        sampler=test_sampler,
-        num_workers=num_workers,
-        collate_fn=collator,
-    )
-
-    return data_loader
-```
-
-### 七、模型构建
-配置文件的模型搭建部分信息(更多默认配置在`$Pet/pet/lib/config/model`)：
-```python
-## $Pet/cfgs/vision/COCO/e2e_faster-impr_rcnn_R-50-C4_1x_ms.yaml
+```yaml
+MISC: # 基础配置
+  CKPT: "ckpts/vision/COCO/e2e_faster-impr_rcnn_R-50-C4_1x_ms" # 权重文件路径
 MODEL: # 模型配置
-  BACKBONE: "resnet_c4" # 骨干网络配置，根据值"resnet_c4"还需找到相应骨干网络类"RESNET",对照其参数信息进行配置补充
-  NECK: "" # 颈部，可选部分，本模型无颈部结构设计
-  GLOBAL_HEAD: # GLOBAL_HEAD结构与任务高度相关，还需进一步在任务分装下指定结构，本实验是检测，对应 DET
+  BACKBONE: "resnet_c4" # 骨干网络配置
+  NECK: "" # 颈部配置，可选部分，本模型无颈部结构设计
+  GLOBAL_HEAD: # 任务配置，本实验为目标检测，对应DET
     DET:
       RPN_ON: True # Faster-RCNN是两阶段检测器，需要通过RPN生成候选框,因此值为True，并对RPN配置进行补充
   ROI_HEAD: # ROI_HEAD的结构设计
     FASTER_ON: True 
-  RESNET: # 骨干网络RESNET的构建参数
-    LAYERS: (3, 4, 6, 3) 
+  RESNET: # 骨干网络RESNET的结构设计
+    LAYERS: (3, 4, 6, 3) # 每一模块的层数，此处的参数设置为ResNet50
   RPN: # GLOBAL_HEAD的RPNMoudle构建的参数
     PRE_NMS_TOP_N_TEST: 6000
     POST_NMS_TOP_N_TEST: 1000
-    SMOOTH_L1_BETA: 0.0  # use L1Loss
+    SMOOTH_L1_BETA: 0.0  # 使用 L1Loss
   FASTER: # ROI_HEAD的FASTER构建的参数
     NUM_CLASSES: 80
     ROI_XFORM_METHOD: "ROIAlignV2"
@@ -242,9 +144,54 @@ MODEL: # 模型配置
     ROI_XFORM_SAMPLING_RATIO: 0  # SR0
     SMOOTH_L1_BETA: 0.0  # use L1Loss
 ```
-根据yaml配置文件，通过GeneralizedCNN类实例化对应模型，在forward函数中按顺序控制数据传输。具体代码在`$Pet/pet/vision/modeling/model_builder.py`中：
+
+​        关于使用模型的详细参数配置解释参见`$Pet/lib/config/model/backbone.py`,关于模型构建的详细介绍参见 [此处](../../usage/model_building_zh.md)。接下来将从主干网络和分割任务两个模块来详细分析此yaml文件中关于模型构建的参数定义。
+
+### 5.1、创建主干网络
+
+​        ResNet50主干网络模型构建的配置信息如下
+
+```yaml
+MISC: # 基础配置
+  CKPT: "ckpts/vision/COCO/e2e_faster-impr_rcnn_R-50-C4_1x_ms" # 权重文件路径
+MODEL: # 模型配置
+  BACKBONE: "resnet_c4" # 骨干网络配置
+  NECK: ""
+  ...
+  RESNET: # 骨干网络RESNET的结构设计
+    LAYERS: (3, 4, 6, 3) # 每一模块的层数，此处的参数设置为ResNet50
+  ...
+```
+
+### 5.2、创建检测任务网络
+
+​        在yaml文件中设定任务关键字为DET，表明任务为目标检测，根据检测任务划分的Head模块和ROI_HEAD模块分别为RPN与FASTER，`RPN_ON: True`表明使用RPN为任务的Head模块，`FASTER_ON: True`表明使用FASTER为任务的ROI_HEAD模块。yaml文件中对这部分进行了以下定义：
+
+```yaml
+...
+GLOBAL_HEAD: # 任务配置，本实验为目标检测，对应DET
+  DET:
+    RPN_ON: True # Faster-RCNN是两阶段检测器，需要通过RPN生成候选框,因此值为True，并对RPN配置进行补充
+ROI_HEAD: # ROI_HEAD的结构设计
+  FASTER_ON: True 
+...
+RPN: # GLOBAL_HEAD的RPNMoudle构建的参数
+  PRE_NMS_TOP_N_TEST: 6000
+  POST_NMS_TOP_N_TEST: 1000
+  SMOOTH_L1_BETA: 0.0  # 使用 L1Loss
+FASTER: # ROI_HEAD的FASTER构建的参数
+  NUM_CLASSES: 80
+  ROI_XFORM_METHOD: "ROIAlignV2"
+  BOX_HEAD: "resnet_c5_head"
+  ROI_XFORM_RESOLUTION: (14, 14)
+  ROI_XFORM_SAMPLING_RATIO: 0  # SR0
+  SMOOTH_L1_BETA: 0.0  # use L1Loss
+...
+```
+
+​        根据yaml配置文件，通过GeneralizedCNN类实例化对应模型，并且在前向函数中控制数据流。具体代码在`$Pet/pet/vision/modeling/model_builder.py`中：
+
 ```python
-## $Pet/pet/vision//modeling/model_builder.py
 from pet.vision.modeling.model_builder import GeneralizedCNN
 
 class GeneralizedCNN(nn.Module):
@@ -283,21 +230,51 @@ class GeneralizedCNN(nn.Module):
     ...
 ```
 
-### 八、优化器与调度器
-yaml配置文件的优化器及调度器部分信息(更多默认配置在`$Pet/pet/lib/config/solver.py`)：
-```python
-## $Pet/cfgs/vision/COCO/e2e_faster-impr_rcnn_R-50-C4_1x_ms.yaml
-SOLVER:
-  OPTIMIZER:
-    BASE_LR: 0.02 # 基本学习率
-  SCHEDULER:
-    TOTAL_ITERS: 90000
-    STEPS: (60000, 80000)
+## 6、模型训练
+
+### 6.1、加载训练数据
+
+​        在训练开始前需要您将下载好的MSCOCO2017数据集放在`$Pet/data/COCO`文件夹下，文件夹结构如下：
+
+```
+COCO
+├── annotations
+├── train2017
+└── val2017
 ```
 
-和其他组件一样，通过解析配置文件相关参数，传给`Optimizer`类(`$Pet/pet/lib/utils/analyser.py`)和`LearningRateScheduler`类(`$Pet/pet/lib/utils/lr_scheduler.py`),从而构建优化器及调度器，仅在训练阶段使用：
+​        以`$Pet/cfgs/vision/COCO/e2e_faster-impr_rcnn_R-50-C4_1x_ms.yaml`为例，在模型训练中的参数构建中指定了所用训练集等训练数据。关于数据加载的详细教程与解释详见 [此处](../../usage/data_zh.md)
+
+```yaml
+TRAIN: # 训练参数设定
+  WEIGHTS: "ckpts/vision/ImageNet/3rdparty/resnet/resnet50a_caffe/resnet50a_caffe_conv1-rgb.pth" # 预训练权重路径
+  DATASETS: ("coco_2017_train",) # 指定训练集
+  SIZE_DIVISIBILITY: 0 # 要求每个batch可被SIZE_DIVISIBILITY整除；为0即不做要求
+  RESIZE: # 图像大小调整的参数
+    SCALES: (640, 672, 704, 736, 768, 800) # 每个训练样本随机均匀地选择一个尺度进行图像大小调整，每个尺度是图像最短边的像素大小
+    MAX_SIZE: 1333 # 缩放输入图像最长边的最大像素大小
+```
+
+### 6.2、优化器与调度器的构建
+
+​        迭代优化是训练深度学习模型的核心内容，迭代优化主要包括了优化器和调度器的参数设定。本教程以`$Pet/cfgs/vision/COCO/e2e_faster-impr_rcnn_R-50-C4_1x_ms.yaml`为例，讲解优化器和调度器的配置。关于迭代优化部分的详细介绍参见 [此处](../../usage/solver_zh.md)
+
+​        yaml文件中规定了优化器对基本学习率进行了设定；在调度器中设定了最大迭代次数、学习率调整迭代轮次。关于优化器与调度器的配置信息如下：
+
+```yaml
+SOLVER:
+  OPTIMIZER: # 优化器设置
+    BASE_LR: 0.02 # 基本学习率
+  SCHEDULER: # 调度器设置
+    TOTAL_ITERS: 90000 # 最大迭代次数
+    STEPS: (60000, 80000) # 学习率调整迭代轮次
+```
+
+​        关于优化器与调度器的构建详细配置解释参见`$Pet/lib/config/solver.py`。
+
+​        在Pet的代码实现中，优化器和学习率调度器具体对应`Optimizer`和`Scheduler`两个基本Python操作类，两个Python类会在整个训练的过程中一直被用于指导模型的优化。通过解析配置文件相关参数，传给`Optimizer`类(`/pet/lib/utils/analyser.py`)和`LearningRateScheduler`类(`/pet/lib/utils/lr_scheduler.py`),从而构建优化器及调度器，仅在训练阶段使用，以下列出了`$pet/tools/vision/train_net.py`部分关于优化器与调度器的构建源码：
+
 ```python
-## $Pet/tools/vision/train_net.py
 from pet.lib.utils.optimizer import Optimizer
 from pet.lib.utils.lr_scheduler import LearningRateScheduler
 
@@ -310,42 +287,171 @@ scheduler = LearningRateScheduler(optimizer, cfg.SOLVER, iter_per_epoch=iter_per
 scheduler = checkpointer.load_scheduler(scheduler)
 ```
 
-### 九、训练
 
-在通过实验配置定义各组件及训练流相关操作后，我们就可以开始实验的训练。
-训练的yaml配置(更多默认配置在`/pet/lib/config/data.py`)：
-```python
-## $Pet/cfgs/vision/COCO/e2e_faster-impr_rcnn_R-50-C4_1x_ms.yaml
+### 6.3、模型加载与保存
+
+​        模型的加载与保存对网络训练十分重要，Pet定义了一个类`CheckPointer`用于相关功能的封装。以`$Pet/cfgs/vision/COCO/e2e_faster-impr_rcnn_R-50-C4_1x_ms.yaml`为例，模型的加载主要需要确定模型参数的加载方式，加载预训练模型，加载模型参数；模型的保存主要包括模型参数保存、优化器与学习率调节器设置等。关于此部分的详细说明参见 [此处](../../usage/solver_zh.md)
+
+​        关于模型加载与保存的完整代码请参考`pet/lib/utils/checkpointer.py`
+
+​        在此yaml文件的设置中通过初始化权重文件所在路径来实现模型的加载，以下列出了yaml文件中的模型加载初始化设定。
+
+```yaml
 TRAIN:
-  WEIGHTS: "ckpts/vision/ImageNet/3rdparty/resnet/resnet50a_caffe/resnet50a_caffe_conv1-rgb.pth" # 预训练权重
-  DATASETS: ("coco_2017_train",)
-  SIZE_DIVISIBILITY: 0
-  RESIZE:
-    SCALES: (640, 672, 704, 736, 768, 800)
-    MAX_SIZE: 1333
+  WEIGHTS: "ckpts/vision/ImageNet/3rdparty/resnet/resnet50a_caffe/resnet50a_caffe_conv1-rgb.pth" # 指定预训练权重文件路径
 ```
-训练实现的核心代码在 `$Pet/tools/vision/train_net.py` 的train函数中定义，详细介绍请看[Pet的训练教程](https://github.com/BUPT-PRIV/Pet-doc/blob/dev/tutorials/training_zh.md)。
 
-### 十、测试
+​        模型的保存主要通过设定参数SNAPSHOT_ITER与SNAPSHOT_EPOCHS来确定，SNAPSHOT_ITER指定了每训练迭代多少次保存一次参数，SNAPSHOT_EPOCHS指定了每训练多少个epochs保留一次参数，二者只能有一个生效。这使得Pet能在断点后继续进行训练，关于这部分的参数详见`$Pet/lib/config/solver.py`.
 
-测试的yaml配置(更多默认配置在`/pet/lib/config/data.py`)：
 ```python
-## $Pet/cfgs/vision/COCO/e2e_faster-impr_rcnn_R-50-C4_1x_ms.yaml 
-TEST:
-  DATASETS: ("coco_2017_val",)
-  RESIZE:
-    SCALE: 800
-    MAX_SIZE: 1333
+# 默认配置
+# Snapshot (model checkpoint) period
+SOLVER.SNAPSHOT_ITER = 10000
+SOLVER.SNAPSHOT_EPOCHS = None
 ```
-测试实现的核心代码在 `$Pet/tools/vision/test_net.py` 的test函数中定义，详细介绍请看[Pet的测试教程](https://github.com/BUPT-PRIV/Pet-doc/blob/dev/tutorials/evaluation.md)。
 
-### 十一、可视化结果
 
-在Pet中Faster R-CNN返回每一个目标的类别、置信度分数和边界框坐标。将MSCOCO2017_val中的一张图片的推理结果进行可视化如下图。
+### 6.4、模型训练参数配置
 
-![image](../../image_source/test.png)
+​        以`$Pet/cfgs/vision/COCO/e2e_faster-impr_rcnn_R-50-C4_1x_ms.yaml`为例，模型主要的训练流程有指定权重文件路径、指定训练集、指定训练过程中需要用到的数据预处理参数、指定图像增强参数、指定随机裁剪参数等，在该yaml文件中对这部分参数进行了指定。关于模型训练的详细说明参见 [此处](../../usage/training_zh.md)
+
+​        关于训练部分的详细参数配置解释参见`$Pet/lib/config/data.py`
+
+​        训练基本参数设定，包括分割数：
+
+```yaml
+TRAIN:
+  ...
+  SIZE_DIVISIBILITY: 0 # 要求每个batch可被SIZE_DIVISIBILITY整除；为0即不做要求
+  ...
+```
+
+​        预处理参数设定，包括图像大小调整等参数设定：
+
+```yaml
+RESIZE: # 图像大小调整的参数
+  SCALES: (640, 672, 704, 736, 768, 800) # 每个训练样本随机均匀地选择一个尺度进行图像大小调整，每个尺度是图像最短边的像素大小
+  MAX_SIZE: 1333 # 缩放输入图像最长边的最大像素大小
+```
+
+
+​        关于模型训练的主要步骤包括创建模型、创建检查点、加载预训练权重或随机初始化、创建优化器、创建训练集与加载器、构建调度器、模型分布式等。以下代码列出了部分训练步骤，详细参见`$pet/tools/vision/train_net.py`。
+
+```python
+# Create model
+model = GeneralizedCNN(cfg)
+logging_rank(model)
+logging_rank(
+    "Params: {} | FLOPs: {:.4f}M / Conv_FLOPs: {:.4f}M | Activations: {:.4f}M / Conv_Activations: {:.4f}M"
+    .format(n_params, model_flops, conv_flops, model_activs, conv_activs)
+)
+
+# Create checkpointer
+checkpointer = CheckPointer(cfg.MISC.CKPT, weights_path=cfg.TRAIN.WEIGHTS, auto_resume=cfg.TRAIN.AUTO_RESUME)
+
+# Load pre-trained weights or random initialization
+model = checkpointer.load_model(model, convert_conv1=cfg.MISC.CONV1_RGB2BGR)
+model.to(torch.device(cfg.MISC.DEVICE))
+if cfg.MISC.DEVICE == "cuda" and cfg.MISC.CUDNN:
+    cudnn.benchmark = True
+    cudnn.enabled = True
+
+# Create optimizer
+optimizer = Optimizer(model, cfg.SOLVER.OPTIMIZER).build()
+optimizer = checkpointer.load_optimizer(optimizer)
+logging_rank("The mismatch keys: {}".format(mismatch_params_filter(sorted(checkpointer.mismatch_keys))))
+
+...
+
+# Create scheduler
+scheduler = LearningRateScheduler(optimizer, cfg.SOLVER, iter_per_epoch=iter_per_epoch)
+scheduler = checkpointer.load_scheduler(scheduler)
+
+...
+
+# Train
+train(cfg, model, train_loader, optimizer, scheduler, checkpointer, all_hooks)
+```
+
+## 7、模型测试
+
+### 7.1、加载测试数据
+
+​        在测试开始前需要您将下载好的MSCOCO2017数据集放在`$Pet/data/COCO`文件夹下，文件夹结构如下
+
+```
+COCO
+├── annotations
+├── train2017
+└── val2017
+```
+
+​        以`$Pet/cfgs/vision/COCO/e2e_faster-impr_rcnn_R-50-C4_1x_ms.yaml`为例，在模型测试中的参数构建中指定了所用测试集等训练数据。关于数据加载的详细教程与解释详见 [此处](../../usage/solver_zh.md)
+
+```yaml
+TEST: # 测试参数设定
+  DATASETS: ("coco_2017_val",) # 指定测试集
+  ...
+```
+
+
+### 7.2、模型测试
+
+​        以`$Pet/cfgs/vision/COCO/e2e_faster-impr_rcnn_R-50-C4_1x_ms.yaml`为例，模型测试过程中需要指定图像大小调整的参数等，这部分在yaml文件中有详细的配置，以下列出了此yaml文件中的关于测试参数设定细节。
+
+​        关于测试部分的详细参数配置解释参见`$Pet/lib/config/data.py`
+
+​​		测试过程中预处理参数指定，此处包括图像大小调整参数:
+
+```yaml
+RESIZE: # 图像大小调整的参数
+  SCALE: 800 # 测试期间图像大小调整的参数，是图像最短边的像素大小
+  MAX_SIZE: 1333 # 缩放输入图像最长边的最大像素大小
+```
+
+​        关于模型测试的主要步骤包括创建模型、加载模型、创建测试数据集与加载器、构建测试引擎等。此处列出部分源码作为解读，详细参见`$pet/tools/vision/test_net.py`。
+
+```python
+# Load model
+test_weights = get_weights(cfg.MISC.CKPT, cfg.TEST.WEIGHTS)
+load_weights(model, test_weights)
+model.eval()
+model.to(torch.device(cfg.MISC.DEVICE))
+
+# Create testing dataset and loader
+dataset = build_dataset(cfg, is_train=False)
+test_loader = make_test_data_loader(cfg, dataset)
+
+# Build hooks
+all_hooks = build_test_hooks(args.cfg_file.split("/")[-1], log_period=10, num_warmup=0)
+
+# Build test engine
+test_engine = TestEngine(cfg, model, dataset)
+
+# Test
+test(cfg, test_engine, test_loader, dataset, all_hooks)
+```
+
+### 7.3、模型评估（可视化与指标）
+
+​        以`$Pet/cfgs/vision/COCO/e2e_faster-impr_rcnn_R-50-C4_1x_ms.yaml`为例，模型的评估需要存储测试记录，设定评估参数，这部分在yaml文件中无相关的配置，详细配置参考默认配置。关于模型评估的详细教程参见 [此处](../../usage/evaluation_zh.md)
+
+​        关于评估部分的详细参数配置解释参见`$Pet/lib/config/config.py`
+
+```python
+# Evaluation matricts options of rpn results
+EVAL.METRICS.RPN = ("APb",)
+
+# Evaluation matricts options of box results
+EVAL.METRICS.BOX = ("APb",)
+```
+
+- **可视化结果**
+  <img src="..\..\image_source\faster_rcnn_coco_test.png" width="60%">
 
 
 ### 参考文献
 [1] Shaoqing Ren, Kaiming He, Ross Girshick, Jian Sun. Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks. NIPS 2015.
+
+[2] Lin T Y , Maire M , Belongie S , et al. Microsoft COCO: Common Objects in Context[C]// European Conference on Computer Vision. Springer International Publishing, 2014.
 
