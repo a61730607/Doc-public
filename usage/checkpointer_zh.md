@@ -217,7 +217,7 @@ def save(self, model, optimizer=None, scheduler=None, copy_latest=True, infix='e
 
 ### save_best
 
-保存最佳结果。该方法会编辑哦当前精度与历史最高精度大小，若超过历史最高精度则保存新的检查点。
+保存最佳结果。该方法会编辑当前精度与历史最高精度大小，若超过历史最高精度则保存新的检查点。
 
 ```python
 def save_best(self, model, optimizer=None, scheduler=None, remove_old=True, infix='epoch'):
