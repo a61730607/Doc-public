@@ -477,7 +477,7 @@ RESIZE:
 关于评估部分的详细参数配置解释参见`$Pet/lib/config/config.py`
 
 ```yaml
-EVAL:# 验证
+EVAL:  # 验证
     RECORD: [{"time": "20210727", "recorder": "user", "version": "0.7a",
             "cls": "top1/top5: 76.41/92.98",
             "mark": "torchvision/resnet50-19c8e357.pth; top1/top5: 76.13/92.86; FLOPs: 4087.1M; Params: 25.55M"}]
