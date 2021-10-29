@@ -1,7 +1,8 @@
 .. toctree::
    :maxdepth: 2
 
-   basic/cls_zh.md
+   basic/cls_cifar_zh.md
+   basic/cls_imagenet_zh.md
    basic/semseg_zh.md
    basic/det_zh.md
    basic/parsing_zh.md
