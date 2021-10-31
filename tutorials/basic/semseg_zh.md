@@ -115,7 +115,7 @@ TEST:# 测试配置 例如指定测试集，指定图像大小调整的参数等
 
 ​        yaml文件中关于数据集部分的配置如下
 
-```python
+```yaml
 DATA:
   DATASET_TYPE: "coco_dataset"# 指定数据集类型
   PIXEL_MEAN: (0.485, 0.456, 0.406)# 像素平均值（BGR顺序）作为元组
@@ -130,7 +130,7 @@ DATA:
 
 ​        以`$Pet/cfgs/tutorials/ASPPV3_R-50c_1x_ADE2017.yaml`为例，其包含了基础配置、模型配置，模型配置主要包括骨干网络配置与结构设置，以及对应任务的Head模块定义等基本配置信息，我们可以通过这些基础信息构建适应任务的模型。全部模型部分构建的yaml文件如下：
 
-```python
+```pytho
 MISC:# 基础配置
   CKPT: "ckpts/tutorials/ADE20K/asppv3/ASPPV3_R-50c_1x"#权重文件路径
 MODEL:# 模型配置
@@ -168,7 +168,7 @@ MODEL:# 模型配置
 
 ​        ResNet50主干网络模型构建的配置信息如下
 
-```python
+```yaml
 MISC:# 基础配置
   CKPT: "ckpts/tutorials/ADE20K/asppv3/ASPPV3_R-50c_1x"#权重文件路径
 MODEL:# 模型配置
@@ -189,7 +189,7 @@ ResNet:# 骨干网络ResNet的结构设计
 
 ​        在yaml文件中设定任务关键字为SEMSEG，表明任务为语义分割，根据分割任务划分的Head模块为AUXSEG与ASPPV3，`AUXSEG_ON: True  ASPPV3_ON: True `表明使用AUXSEG与ASPPV3为任务的Head模块。yaml文件中对这部分进行了以下定义：
 
-```python
+```yaml
 ...
 GLOBAL_HEAD:# 任务配置，本实验为语义分割，对应SEMSEG
     SEMSEG:        
@@ -265,7 +265,7 @@ ADE20K
 
 ​        以`$Pet/cfgs/tutorials/ASPPV3_R-50c_1x_ADE2017.yaml`为例，在模型训练中的参数构建中指定了所用训练集等训练数据。关于数据加载的详细教程与解释详见 [此处](../../usage/data_zh.md)
 
-```python
+```yaml
 TRAIN:# 训练参数设定
 ...
   DATASETS: ("ade2017_sceneparsing_train",)#指定训练集
@@ -277,7 +277,7 @@ TRAIN:# 训练参数设定
 
 ​        yaml文件中规定了优化器对基本学习率进行了设定，在优化器中对优化器类型、基本学习率、超参数进行了指定；在调度器中设定了最大迭代次数、SGD迭代次数、调度器类型。关于优化器与调度器的配置信息如下：
 
-```python
+```yaml
 SOLVER:
   OPTIMIZER:# 优化器
     TYPE:"SGD"# 指定优化器类型为SGD,其他还有"RMSPROP", "ADAM"等
@@ -316,19 +316,19 @@ scheduler = checkpointer.load_scheduler(scheduler)
 
 ​        在此yaml文件的设置中通过初始化权重文件所在路径来实现模型的加载，以下列出了yaml文件中的模型加载初始化设定。
 
-```python
+```yaml
 TRAIN:# 训练参数设定
   WEIGHTS: "ckpts/vision/ImageNet/3rdparty/resnet/resnet50c_mmcv/resnet50_v1c-2cccc1ad-convert.pth"# 指定权重文件路径
 ```
 
 ​        模型的保存主要通过设定参数SNAPSHOT_ITER与SNAPSHOT_EPOCHS来确定，SNAPSHOT_ITER指定了每训练迭代多少次保存一次参数，SNAPSHOT_EPOCHS指定了每训练多少个epochs保留一次参数，二者只能有一个生效。这使得Pet能在断点后继续进行训练，关于这部分的参数详见`$Pet/lib/config/solver.py`.
 
-```python
+```yaml
 # Snapshot (model checkpoint) period
 SOLVER.SNAPSHOT_ITER = 10000
 ```
 
-```python
+```yaml
 # Snapshot (model checkpoint) period
 SOLVER.SNAPSHOT_EPOCHS = 50
 ```
@@ -343,7 +343,7 @@ SOLVER.SNAPSHOT_EPOCHS = 50
 
 ​        训练基本参数设定，包括batch size与分割数：
 
-```python
+```yaml
 TRAIN:# 训练参数设定
 ...
   BATCH_SIZE: 16# 训练最小batch size
@@ -353,7 +353,7 @@ TRAIN:# 训练参数设定
 
 ​        预处理参数设定，包括图像增强，随机裁剪等参数设定：
 
-```python
+```yaml
   ...
   TRANSFORMS: ("color_jitter", "resize", "random_crop", "random_horizontal_flip", "to_tensor", "normalize")# 训练过程中需要用到的数据预处理参数
   COLOR_JITTER:# 图像增强参数
@@ -433,7 +433,7 @@ ADE20K
 
 ​        以`$Pet/cfgs/tutorials/ASPPV3_R-50c_1x_ADE2017.yaml`为例，在模型测试中的参数构建中指定了所用测试集等训练数据。关于数据加载的详细教程与解释详见 [此处](../../usage/solver_zh.md)
 
-```python
+```yaml
 TEST:# 测试参数设定
   DATASETS: ("ade2017_sceneparsing_val",)# 指定测试集
 ```
@@ -446,7 +446,7 @@ TEST:# 测试参数设定
 
 ​        测试基本参数指定：
 
-```python
+```yaml
 TEST:# 测试参数设定
 ...
   SIZE_DIVISIBILITY: 8# 指定每一个整理批次的分割数
@@ -455,7 +455,7 @@ TEST:# 测试参数设定
 
 ​		测试过程中预处理参数指定，此处包括图像大小调整参数:
 
-```python
+```yaml
 ...
 RESIZE:
     SCALE: 512# 测试期间图像大小调整的参数，是图像最短边的像素大小
@@ -490,7 +490,7 @@ RESIZE:
 
 ​        关于评估部分的详细参数配置解释参见`$Pet/lib/config/config.py`
 
-```python
+```yaml
 EVAL:# 验证
   RECORD: [{"time": "20210801", "recorder": "user", "version": "0.7a","semseg": "mIoU/PixelACC/MeanACC/MeanF1Score:42.09/79.99/53.03/55.95",
             "mark": ""}]# 测试记录存储，"time":测试时间；"recorder":测试者；"version":所用版本；"semseg": "mIoU/PixelACC/MeanACC/MeanF1Score:42.09/79.99/53.03/55.95":评估参数
