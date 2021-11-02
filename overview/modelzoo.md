@@ -1,26 +1,25 @@
 
-
 | Network                             | Top1/Top5    | speed(s) | Params  | Flops      | downlowd                                                     | 提取码      |
-|----|----|----|----|----|----|
-| mobilenet_v1_0.25                   | 73.71/ 91.49 | 0.008    | 4.23M   | 567.7M     | [![baidudisk](.\image_source\baidudisk.png)](https://pan.baidu.com/s/1nKTFXvBP0F0YZp8t9jv_wg) | gqfa        |
-| mobilenet_v2_1.0_1.5x               | 71.87/ 90.28 | 0.013    | 3.50M   | 299.4M     |                                                              | vc53        |
-| mobilenet_v3_large_0.4x             | 73.71/ 91.49 | 0.018    | 4.22M   | 214.0M     |                                                              | o5fg        |
-| mobilenet_v3_large_1.5x             | 74.62/ 92.02 | 0.018    | 4.22M   | 214.0M     |                                                              | lyuq        |
-| aligned_hrnet_w48                   | 80.65/ 95.20 | 0.124    | 64.40M  | 11699.8M   |                                                              | 6z4j        |
-| se_aligned_hrnet_w48g_finetune_0.5x | 80.65/ 95.20 | 0.144    | 116.56M | 26242.19M  |                                                              | 5sfh        |
-| se_hrnet_w32g_finetune_0.3x         | 80.65/ 95.20 | 0.114    | 116.56M | 26242.19M  |                                                              | cv9t        |
-| aligned_resnet50d                   | 80.65/ 95.20 | 0.028    | 38.45M  | 6131.5M    |                                                              | xd6l        |
-| resnet101d                          | 78.49/ 94.06 | 0.028    | 28.10M  | 4326.8M    |                                                              | k5fl        |
-| resnet18d                           | 77.5/ 93.90  | 0.008    | 25.57M  | 4326.8M    |                                                              | 9ydo        |
-| resnet34d                           | 77.5/ 93.90  | 0.012    | 25.57M  | 4326.8M    |                                                              | f72c        |
-| resnet50a                           | 77.5/ 93.90  | 0.013    | 25.55M  | 3855.9M    |                                                              | 1r6b        |
-| resnet50a_normal                    | 77.5/ 93.90  | 0.016    | 25.55M  | 3855.9M    |                                                              | p8or        |
-| resnet50b                           | 77.5/ 93.90  | 0.016    | 25.55M  | 4087.1M    |                                                              | usyp        |
-| resnet50c                           | 77.5/ 93.90  | 0.015    | 25.57M  | 4326.8M    |                                                              | 7u4c        |
-| resnet50d                           | 77.5/ 93.90  | 0.015    | 28.10M  | 4326.8M    |                                                              | cnxs        |
-| aligned_resnext101d_32x4d           | 77.5/ 93.90  | 0.074    | 64.40M  | 11699.8M   |                                                              | fiyk        |
-| resnext101d_32x4d                   | 79.17/ 94.44 | 0.038    | 25.04M  | 4468.07M   |                                                              | wrx7        |
-| resnext50d_32x4d                    | 80.45/ 95.13 | 0.024    | 25.04M  | 4468.07M   |                                                              | q1fu        |
+| ---------------------------------- | ----------- | ---- | ------ | -------- | --- | --- |
+| mobilenet_v1_0.25                   | 73.71/ 91.49 | 0.008    | 4.23M   | 567.7M     | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/1nKTFXvBP0F0YZp8t9jv_wg) | gqfa        |
+| mobilenet_v2_1.0_1.5x               | 71.87/ 90.28 | 0.013    | 3.50M   | 299.4M     | [![baidudisk](./../image_source/baidudisk.jpg)]() |         |
+| mobilenet_v3_large_0.4x             | 73.71/ 91.49 | 0.018    | 4.22M   | 214.0M     | [![baidudisk](./../image_source/baidudisk.jpg)]() |         |
+| mobilenet_v3_large_1.5x             | 74.62/ 92.02 | 0.018    | 4.22M   | 214.0M     | [![baidudisk](./../image_source/baidudisk.jpg)]() |         |
+| aligned_hrnet_w48                   | 80.65/ 95.20 | 0.124    | 64.40M  | 11699.8M   | [![baidudisk](./../image_source/baidudisk.jpg)]() |         |
+| se_aligned_hrnet_w48g_finetune_0.5x | 80.65/ 95.20 | 0.144    | 116.56M | 26242.19M  | [![baidudisk](./../image_source/baidudisk.jpg)]() |         |
+| se_hrnet_w32g_finetune_0.3x         | 80.65/ 95.20 | 0.114    | 116.56M | 26242.19M  | [![baidudisk](./../image_source/baidudisk.jpg)]() |         |
+| aligned_resnet50d                   | 80.65/ 95.20 | 0.028    | 38.45M  | 6131.5M    | [![baidudisk](./../image_source/baidudisk.jpg)]() |         |
+| resnet101d                          | 78.49/ 94.06 | 0.028    | 28.10M  | 4326.8M    | [![baidudisk](./../image_source/baidudisk.jpg)]() |         |
+| resnet18d                           | 77.5/ 93.90  | 0.008    | 25.57M  | 4326.8M    | [![baidudisk](./../image_source/baidudisk.jpg)]() |         |
+| resnet34d                           | 77.5/ 93.90  | 0.012    | 25.57M  | 4326.8M    | [![baidudisk](./../image_source/baidudisk.jpg)]() |         |
+| resnet50a                           | 77.5/ 93.90  | 0.013    | 25.55M  | 3855.9M    | [![baidudisk](./../image_source/baidudisk.jpg)]() |         |
+| resnet50a_normal                    | 77.5/ 93.90  | 0.016    | 25.55M  | 3855.9M    | [![baidudisk](./../image_source/baidudisk.jpg)]() |         |
+| resnet50b                           | 77.5/ 93.90  | 0.016    | 25.55M  | 4087.1M    | [![baidudisk](./../image_source/baidudisk.jpg)]() |         |
+| resnet50c                           | 77.5/ 93.90  | 0.015    | 25.57M  | 4326.8M    | [![baidudisk](./../image_source/baidudisk.jpg)]() |         |
+| resnet50d                           | 77.5/ 93.90  | 0.015    | 28.10M  | 4326.8M    | [![baidudisk](./../image_source/baidudisk.jpg)]() |         |
+| aligned_resnext101d_32x4d           | 77.5/ 93.90  | 0.074    | 64.40M  | 11699.8M   | [![baidudisk](./../image_source/baidudisk.jpg)]() |         |
+| resnext101d_32x4d                   | 79.17/ 94.44 | 0.038    | 25.04M  | 4468.07M   | [![baidudisk](./../image_source/baidudisk.jpg)]() |         |
+| resnext50d_32x4d                    | 80.45/ 95.13 | 0.024    | 25.04M  | 4468.07M   | [![baidudisk](./../image_source/baidudisk.jpg)]() |         |
 
 以下数据为第三方模型数据
 
