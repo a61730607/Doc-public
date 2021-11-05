@@ -17,9 +17,9 @@
 | resnet50b                           | 77.5/ 93.90  | 0.016    | 25.55M  | 4087.1M    | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/1H3o6oVXudp_Hzq3iyhA3bw) |
 | resnet50c                           | 77.5/ 93.90  | 0.015    | 25.57M  | 4326.8M    | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/1MLwR0txMryR0dv_S4BsLpg) |
 | resnet50d                           | 77.5/ 93.90  | 0.015    | 28.10M  | 4326.8M    | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/1z2_2KE6DX3qHkFhlfRZgHQ) |
-| aligned_resnext101d_32x4d           | 77.5/ 93.90  | 0.074    | 64.40M  | 11699.8M   | [![baidudisk](./../image_source/baidudisk.jpg)]() |
-| resnext101d_32x4d                   | 79.17/ 94.44 | 0.038    | 25.04M  | 4468.07M   | [![baidudisk](./../image_source/baidudisk.jpg)]() |
-| resnext50d_32x4d                    | 80.45/ 95.13 | 0.024    | 25.04M  | 4468.07M   | [![baidudisk](./../image_source/baidudisk.jpg)]() |
+| aligned_resnext101d_32x4d           | 77.5/ 93.90  | 0.074    | 64.40M  | 11699.8M   | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/1w5uIsm4HlwJDY392fDFkAA) |
+| resnext101d_32x4d                   | 79.17/ 94.44 | 0.038    | 25.04M  | 4468.07M   | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/1y9XMeemR4Qy4rYC11Uawig) |
+| resnext50d_32x4d                    | 80.45/ 95.13 | 0.024    | 25.04M  | 4468.07M   | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/11cm-eIk9FP67Wy-RowPhWg) |
 
 以下数据为第三方模型数据
 
