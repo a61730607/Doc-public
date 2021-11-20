@@ -25,81 +25,81 @@
 
 （模型合集下载链接：[![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/1xWr-Yy1Qkg_1pVzKaLMGqA)， 提取码：priv）
 
-| Network             | Top1/Top5    | speed(s) | Params  | Flops      | source      | downlowd | 提取码 |
-| ------------------ | ----------- | ------- | ------ | --------- | ---------- | ------- | ------- |
-| alexnet             | 56.52/ 79.06 | 0.003    | 61.1M   | 655.56M    | [torchvision](https://github.com/pytorch/vision) | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/1j1BvJcdKZaxX5gTM6HtiyQ) | q5lh     |
-| dla34               | 74.63/ 92.06 | 0.014    | 15.78M  | 3072.3M    | [official](https://github.com/ucbdrive/dla) | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/1hiYikZp-4MPIm4MNqgfPMw) | qlj5     |
-| dla46_c             | 64.87/ 86.28 | 0.015    | 1.30M   | 575.6M     | [official](https://github.com/ucbdrive/dla) | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/1dtCkO7b32GgpOSF5HMmYMQ) | 946l     |
-| dla46x_c            | 65.98/ 86.98 | 0.018    | 1.07M   | 534.0M     | [official](https://github.com/ucbdrive/dla) | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/1EOGNt-cqTSkpKs2L9b-XKw) | nest     |
-| dla60               | 77.02/ 93.30 | 0.022    | 22.33M  | 4311.9M    | [official](https://github.com/ucbdrive/dla) | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/1jl3EDySXYuxaB2hlObEQxw) | 3qyj     |
-| dla60x_c            | 67.90/ 88.43 | 0.023    | 1.33M   | 584.2M     | [official](https://github.com/ucbdrive/dla) | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/18SZtOivFeR0k-1ww1lvY_g) | lgmw     |
-| dla60x              | 78.24/ 94.02 | 0.022    | 17.64M  | 3592.6M    | [official](https://github.com/ucbdrive/dla) | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/1VCCsn178poWQDPLSxXZHnQ) | 35qf     |
-| dla102              | 78.02/ 93.95 | 0.034    | 33.73M  | 7291.9M    | [official](https://github.com/ucbdrive/dla) | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/1qwXhqstqo9bBhteR9w4IbA) | i64k     |
-| dla102x2            | 79.45/ 94.64 | 0.055    | 41.74M  | 9411.4M    | [official](https://github.com/ucbdrive/dla) | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/1WHD-758ep_9u2OhqUaYVgQ) | w4d3     |
-| dla102x             | 78.50/ 94.23 | 0.031    | 26.77M  | 5975.3M    | [official](https://github.com/ucbdrive/dla) | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/1TxrwV3M763UkoQwD8pWduA) | 5jpa     |
-| dla169              | 78.71/ 94.33 | 0.046    | 53.98M  | 11723.5M   | [official](https://github.com/ucbdrive/dla) | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/1xrVbj_C6f-JthuIHTZEX_Q) | du1h     |
-| efficientnet_b0     | 75.78/ 92.74 | 0.021    | 5.28M   | 373.2M     | [official](https://github.com/tensorflow/tpu/tree/master/models/official/efficientnet) | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/1VdO71zuOEou4yppdomyYWg) | w4yb     |
-| fairnas_a           | 75.32/ 92.38 | 0.014    | 4.65M   | 386.8M     | [official](https://github.com/fairnas/FairNAS) | https://pan.baidu.com/s/1e6oIR6Z7mgtfEmV_E8L8Fg |      |
-| fairnas_b           | 75.13/ 92.31 | 0.014    | 4.50M   | 344.0M     | [official](https://github.com/fairnas/FairNAS) | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/1C8uqimmtJo82A4wJqVG1mw) |      |
-| fairnas_c           | 74.67/ 92.13 | 0.014    | 4.39M   | 319.7M     | [official](https://github.com/fairnas/FairNAS) | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/1Buxv8s4aUpDkyub9eqbs4g) |      |
-| fbnet_c             | 75.12/ 92.38 | 0.016    | 5.57M   | 382.9M     | [rwightman](https://github.com/rwightman/pytorch-image-models) | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/1tJL2dmAsk2c5x_K7HkivFQ) |      |
-| hrnet_w18           | 76.75/ 93.44 | 0.085    | 21.29M  | 4281.4M    | [official](https://github.com/HRNet/HRNet-Image-Classification) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| hrnet_w30           | 78.19/ 94.22 | 0.078    | 37.71M  | 8103.7M    | [official](https://github.com/HRNet/HRNet-Image-Classification) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| hrnet_w32           | 78.44/ 94.18 | 0.066    | 41.23M  | 8919.0M    | [official](https://github.com/HRNet/HRNet-Image-Classification) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| hrnet_w40           | 78.93/ 94.46 | 0.083    | 57.55M  | 12689.9M   | [official](https://github.com/HRNet/HRNet-Image-Classification) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| hrnet_w44           | 78.89/ 94.37 | 0.068    | 67.06M  | 14881.0M   | [official](https://github.com/HRNet/HRNet-Image-Classification) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| hrnet_w48           | 79.31/ 94.51 | 0.083    | 77.46M  | 17275.9M   | [official](https://github.com/HRNet/HRNet-Image-Classification) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| hrnet_w64           | 79.47/ 94.65 | 0.078    | 128.05M | 28893.3M   | [official](https://github.com/HRNet/HRNet-Image-Classification) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| inception_v1        | 69.78/ 89.53 | 0.018    | 6.62M   | 1497.3M    | [torchvision](https://github.com/pytorch/vision) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| inception_v3        | 77.49/ 93.56 | 0.028    | 23.83M  | 5711.1M    | [torchvision](https://github.com/pytorch/vision) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| inception_v4        | 80.13/ 94.92 | 0.046    | 42.67M  | 12252.4M   | [cadene](https://github.com/Cadene/pretrained-models.pytorch) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| inception_resnet_v2 | 80.30/ 95.25 | 0.056    | 55.84M  | 13154.2M   | [cadene](https://github.com/Cadene/pretrained-models.pytorch) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| mnasnet_a1          | 75.33/ 92.56 | 0.017    | 3.88M   | 310.2M     | [rwightman](https://github.com/rwightman/pytorch-image-models) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| mnasnet_b1          | 74.61/ 92.16 | 0.013    | 4.38M   | 313.1M     | [rwightman](https://github.com/rwightman/pytorch-image-models) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| mnasnet_b1          | 73.45/ 91.51 | 0.012    | 4.38M   | 313.1M     | [torchvision](https://github.com/pytorch/vision) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| mobilenet_v2_1.0    | 71.87/ 90.28 | 0.014    | 3.50M   | 299.4M     | [torchvision](https://github.com/pytorch/vision) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| mobilenet_v3_large  | 75.44/ 92.65 | 0.017    | 5.47M   | 215.3M     | [rwightman](https://github.com/rwightman/pytorch-image-models) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| moga_a              | 75.85/ 92.79 | 0.019    | 5.15M   | 302.7M     | [official](https://github.com/xiaomi-automl/MoGA) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| moga_b              | 75.54/ 92.58 | 0.018    | 5.50M   | 247.3M     | [official](https://github.com/xiaomi-automl/MoGA) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| moga_c              | 75.31/ 92.48 | 0.017    | 5.48M   | 219.8M     | [official](https://github.com/xiaomi-automl/MoGA) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| peleenet            | 72.08/ 90.64 | 0.025    | 2.80M   | 507.0M     | [official](https://github.com/Robert-JunWang/PeleeNet) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| proxylessnas_cpu    | 75.29/ 92.39 | 0.015    | 4.36M   | 437.8M     | [official](https://github.com/mit-han-lab/ProxylessNAS/tree/master) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| proxylessnas_gpu    | 75.08/ 92.53 | 0.011    | 7.11M   | 463.5M     | [official](https://github.com/mit-han-lab/ProxylessNAS/tree/master) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| proxylessnas_mobile | 74.59/ 92.20 | 0.014    | 4.08M   | 319.1M     | [official](https://github.com/mit-han-lab/ProxylessNAS/tree/master) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| resnet18b           | 69.75/ 89.07 | 0.007    | 11.68M  | 1813.5M    | [torchvision](https://github.com/pytorch/vision) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| resnet34b           | 73.31/ 91.42 | 0.013    | 21.79M  | 3663.2M    | [torchvision](https://github.com/pytorch/vision) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| resnet50a           | 61.30/ 84.18 | 0.014    | 25.55M  | 3855.9M    | [caffe](https://github.com/KaimingHe/deep-residual-networks) | [![baidudisk](./../image_source/baidudisk.jpg)]() |       |
-| resnet50b-gn        | 59.91/ 83.61 | 0.017    | 25.55M  | 4087.1M    | [caffe2](https://github.com/facebookresearch/Detectron/tree/master/projects/GN) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| resnet50b_128d      | 78.46/ 94.08 | 0.017    | 68.88M  | 11395.9M   | [torchvision](https://github.com/pytorch/vision) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| resnet50b           | 76.13/ 92.86 | 0.017    | 25.55M  | 4087.1M    | [torchvision](https://github.com/pytorch/vision) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| resnet101a          | 63.10/ 85.57 | 0.029    | 44.54M  | 7568.1M    | [caffe](https://github.com/KaimingHe/deep-residual-networks) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| resnet101b_128d     | 78.84/ 94.28 | 0.025    | 126.88M | 22751.0M   | [torchvision](https://github.com/pytorch/vision) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| resnet101b          | 77.37/ 93.54 | 0.027    | 44.54M  | 7799.3M    | [torchvision](https://github.com/pytorch/vision) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| resnet152a          | 63.12/ 85.61 | 0.041    | 60.19M  | 11280.3M   | [caffe](https://github.com/KaimingHe/deep-residual-networks) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| resnet152b          | 78.31/ 94.04 | 0.042    | 60.19M  | 11511.5M   | [torchvision](https://github.com/pytorch/vision) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| resnext50b_32x4d    | 77.61/ 93.69 | 0.022    | 25.02M  | 4228.4M    | [torchvision](https://github.com/pytorch/vision) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| resnext101b_32x16d  | 84.17/ 97.19 | 0.042    | 194.02M | 36161.24M  | [wsp](https://github.com/facebookresearch/WSL-Images) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| resnext101b_32x32d  | 85.09/ 97.43 | 0.043    | 468.53M | 87104.73M  | [wsp](https://github.com/facebookresearch/WSL-Images) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| resnext101b_32x48d  | 85.44/ 97.57 | 0.046    | 828.41M | 153308.15M | [official](https://github.com/facebookresearch/WSL-Images) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| resnext101b_32x4d   | 78.18/ 93.88 | 0.039    | 44.17M  | 7967.9M    | [official](https://github.com/facebookresearch/ResNeXt) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| resnext101b_32x8d   | 79.31/ 94.52 | 0.039    | 88.79M  | 16411.96M  | [torchvision](https://github.com/pytorch/vision) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| resnext101b_32x8d   | 82.68/ 96.63 | 0.034    | 88.79M  | 16411.96M  | [wsp](https://github.com/facebookresearch/WSL-Images) | [![baidudisk](./../image_source/baidudisk.jpg)]() |        |
-| resnext101b_64x4d   | 78.95/ 94.25 | 0.057    | 83.45M  | 15458.2M   | [official](https://github.com/facebookresearch/ResNeXt) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| se_resnext26b_32x4d | 76.55/ 93.06 | 0.016    | 16.79M  | 2468.6M    | [rwightman](https://github.com/rwightman/pytorch-image-models) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| shufflenet_v2_0.5   | 60.63/ 82.23 | 0.015    | 1.36M   | 39.45M     | [official](https://github.com/megvii-model/ShuffleNet-Series) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| shufflenet_v2_1.0   | 69.11/ 88.49 | 0.015    | 2.27M   | 144.8M     | [official](https://github.com/megvii-model/ShuffleNet-Series) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| shufflenet_v2_1.5   | 72.34/ 90.37 | 0.016    | 3.50M   | 297.9M     | [official](https://github.com/megvii-model/ShuffleNet-Series) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| shufflenet_v2_2.0   | 74.90/ 92.27 | 0.015    | 7.40M   | 588.7M     | [official](https://github.com/megvii-model/ShuffleNet-Series) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| spnasnet            | 74.08/ 91.83 | 0.016    | 4.42M   | 332.1M     | [rwightman](https://github.com/rwightman/pytorch-image-models) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| vgg11               | 69.02/ 88.62 | 0.004    | 132.8M  | 7485.4M    | [torchvision](https://github.com/pytorch/vision) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| vgg11bn             | 70.37/ 89.81 | 0.005    | 132.8M  | 7485.4M    | [torchvision](https://github.com/pytorch/vision) | [![baidudisk](./../image_source/baidudisk.jpg)]() |        |
-| vgg13               | 69.92/ 89.24 | 0.004    | 133.0M  | 11184.8M   | [torchvision](https://github.com/pytorch/vision) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| vgg13bn             | 71.58/ 90.37 | 0.005    | 133.0M  | 11184.8M   | [torchvision](https://github.com/pytorch/vision) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| vgg16               | 71.59/ 90.38 | 0.005    | 138.3M  | 15346.6M   | [torchvision](https://github.com/pytorch/vision) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| vgg16bn             | 73.36/ 91.51 | 0.006    | 138.3M  | 15346.6M   | [torchvision](https://github.com/pytorch/vision) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| vgg19               | 72.37/ 90.87 | 0.005    | 143.6M  | 19508.4M   | [torchvision](https://github.com/pytorch/vision) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| vgg19bn             | 74.21/ 91.84 | 0.007    | 143.6M  | 19508.4M   | [torchvision](https://github.com/pytorch/vision) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| vovnet37            | 76.77/ 93.43 | 0.013    | 22.60M  | 7071.2M    | [stigma](https://github.com/stigma0617/VoVNet.pytorch) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| vovnet57            | 77.73/ 93.71 | 0.018    | 36.64M  | 8929.1M    | [stigma](https://github.com/stigma0617/VoVNet.pytorch) | [![baidudisk](./../image_source/baidudisk.jpg)]() |      |
-| xception            | 78.88/ 94.29 | 0.013    | 22.85M  | 8355.3M    | [cadene](https://github.com/Cadene/pretrained-models.pytorch) | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/1AP2fXDwOdF2nOkEzabGXVA) |      |
+| Network             | downlowd | Top1/Top5    | speed(s) | Params  | Flops      | source      | 提取码 |
+| ------------------ | ------- | ----------- | ------- | ------ | --------- | ---------- | ------- |
+| alexnet             | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/1j1BvJcdKZaxX5gTM6HtiyQ) | 56.52/ 79.06 | 0.003    | 61.1M   | 655.56M    | [torchvision](https://github.com/pytorch/vision) | q5lh     |
+| dla34               | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/1hiYikZp-4MPIm4MNqgfPMw) | 74.63/ 92.06 | 0.014    | 15.78M  | 3072.3M    | [official](https://github.com/ucbdrive/dla) | qlj5     |
+| dla46_c             | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/1dtCkO7b32GgpOSF5HMmYMQ) | 64.87/ 86.28 | 0.015    | 1.30M   | 575.6M     | [official](https://github.com/ucbdrive/dla) | 946l     |
+| dla46x_c            | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/1EOGNt-cqTSkpKs2L9b-XKw) | 65.98/ 86.98 | 0.018    | 1.07M   | 534.0M     | [official](https://github.com/ucbdrive/dla) | nest     |
+| dla60               | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/1jl3EDySXYuxaB2hlObEQxw) | 77.02/ 93.30 | 0.022    | 22.33M  | 4311.9M    | [official](https://github.com/ucbdrive/dla) | 3qyj     |
+| dla60x_c            | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/18SZtOivFeR0k-1ww1lvY_g) | 67.90/ 88.43 | 0.023    | 1.33M   | 584.2M     | [official](https://github.com/ucbdrive/dla) | lgmw     |
+| dla60x              | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/1VCCsn178poWQDPLSxXZHnQ) | 78.24/ 94.02 | 0.022    | 17.64M  | 3592.6M    | [official](https://github.com/ucbdrive/dla) | 35qf     |
+| dla102              | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/1qwXhqstqo9bBhteR9w4IbA) | 78.02/ 93.95 | 0.034    | 33.73M  | 7291.9M    | [official](https://github.com/ucbdrive/dla) | i64k     |
+| dla102x2            | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/1WHD-758ep_9u2OhqUaYVgQ) | 79.45/ 94.64 | 0.055    | 41.74M  | 9411.4M    | [official](https://github.com/ucbdrive/dla) | w4d3     |
+| dla102x             | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/1TxrwV3M763UkoQwD8pWduA) | 78.50/ 94.23 | 0.031    | 26.77M  | 5975.3M    | [official](https://github.com/ucbdrive/dla) | 5jpa     |
+| dla169              | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/1xrVbj_C6f-JthuIHTZEX_Q) | 78.71/ 94.33 | 0.046    | 53.98M  | 11723.5M   | [official](https://github.com/ucbdrive/dla) | du1h     |
+| efficientnet_b0     | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/1VdO71zuOEou4yppdomyYWg) | 75.78/ 92.74 | 0.021    | 5.28M   | 373.2M     | [official](https://github.com/tensorflow/tpu/tree/master/models/official/efficientnet) | w4yb     |
+| fairnas_a           | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/1e6oIR6Z7mgtfEmV_E8L8Fg) | 75.32/ 92.38 | 0.014    | 4.65M   | 386.8M     | [official](https://github.com/fairnas/FairNAS) |      |
+| fairnas_b           | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/1C8uqimmtJo82A4wJqVG1mw) | 75.13/ 92.31 | 0.014    | 4.50M   | 344.0M     | [official](https://github.com/fairnas/FairNAS) |      |
+| fairnas_c           | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/1Buxv8s4aUpDkyub9eqbs4g) | 74.67/ 92.13 | 0.014    | 4.39M   | 319.7M     | [official](https://github.com/fairnas/FairNAS) |      |
+| fbnet_c             | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/1tJL2dmAsk2c5x_K7HkivFQ) | 75.12/ 92.38 | 0.016    | 5.57M   | 382.9M     | [rwightman](https://github.com/rwightman/pytorch-image-models) |      |
+| hrnet_w18           | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/1KD5Sy0x4JJtFVlo4TjELHA) | 76.75/ 93.44 | 0.085    | 21.29M  | 4281.4M    | [official](https://github.com/HRNet/HRNet-Image-Classification) |      |
+| hrnet_w30           | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/1vRpR0rJPyYKnLoMgIPFAOA) | 78.19/ 94.22 | 0.078    | 37.71M  | 8103.7M    | [official](https://github.com/HRNet/HRNet-Image-Classification) |      |
+| hrnet_w32           | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/1-vca3-KE3Sv2vYXiRq7ZRg) | 78.44/ 94.18 | 0.066    | 41.23M  | 8919.0M    | [official](https://github.com/HRNet/HRNet-Image-Classification) |      |
+| hrnet_w40           | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/1aEcc8dAbEmkim3ED4oxmNg) | 78.93/ 94.46 | 0.083    | 57.55M  | 12689.9M   | [official](https://github.com/HRNet/HRNet-Image-Classification) |      |
+| hrnet_w44           | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/1jiIjKFHCJuGh-idjPi_XIg) | 78.89/ 94.37 | 0.068    | 67.06M  | 14881.0M   | [official](https://github.com/HRNet/HRNet-Image-Classification) |      |
+| hrnet_w48           | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/1qaRFO-A_BrkgM0YQqqfkeQ) | 79.31/ 94.51 | 0.083    | 77.46M  | 17275.9M   | [official](https://github.com/HRNet/HRNet-Image-Classification) |      |
+| hrnet_w64           | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/1feT9kwhwPceoMgnGsjekjw) | 79.47/ 94.65 | 0.078    | 128.05M | 28893.3M   | [official](https://github.com/HRNet/HRNet-Image-Classification) |      |
+| inception_v1        | [![baidudisk](./../image_source/baidudisk.jpg)]() | 69.78/ 89.53 | 0.018    | 6.62M   | 1497.3M    | [torchvision](https://github.com/pytorch/vision) |      |
+| inception_v3        | [![baidudisk](./../image_source/baidudisk.jpg)]() | 77.49/ 93.56 | 0.028    | 23.83M  | 5711.1M    | [torchvision](https://github.com/pytorch/vision) |      |
+| inception_v4        | [![baidudisk](./../image_source/baidudisk.jpg)]() | 80.13/ 94.92 | 0.046    | 42.67M  | 12252.4M   | [cadene](https://github.com/Cadene/pretrained-models.pytorch) |      |
+| inception_resnet_v2 | [![baidudisk](./../image_source/baidudisk.jpg)]() | 80.30/ 95.25 | 0.056    | 55.84M  | 13154.2M   | [cadene](https://github.com/Cadene/pretrained-models.pytorch) |      |
+| mnasnet_a1          | [![baidudisk](./../image_source/baidudisk.jpg)]() | 75.33/ 92.56 | 0.017    | 3.88M   | 310.2M     | [rwightman](https://github.com/rwightman/pytorch-image-models) |      |
+| mnasnet_b1          | [![baidudisk](./../image_source/baidudisk.jpg)]() | 74.61/ 92.16 | 0.013    | 4.38M   | 313.1M     | [rwightman](https://github.com/rwightman/pytorch-image-models) |      |
+| mnasnet_b1          | [![baidudisk](./../image_source/baidudisk.jpg)]() | 73.45/ 91.51 | 0.012    | 4.38M   | 313.1M     | [torchvision](https://github.com/pytorch/vision) |      |
+| mobilenet_v2_1.0    | [![baidudisk](./../image_source/baidudisk.jpg)]() | 71.87/ 90.28 | 0.014    | 3.50M   | 299.4M     | [torchvision](https://github.com/pytorch/vision) |      |
+| mobilenet_v3_large  | [![baidudisk](./../image_source/baidudisk.jpg)]() | 75.44/ 92.65 | 0.017    | 5.47M   | 215.3M     | [rwightman](https://github.com/rwightman/pytorch-image-models) |      |
+| moga_a              | [![baidudisk](./../image_source/baidudisk.jpg)]() | 75.85/ 92.79 | 0.019    | 5.15M   | 302.7M     | [official](https://github.com/xiaomi-automl/MoGA) |      |
+| moga_b              | [![baidudisk](./../image_source/baidudisk.jpg)]() | 75.54/ 92.58 | 0.018    | 5.50M   | 247.3M     | [official](https://github.com/xiaomi-automl/MoGA) |      |
+| moga_c              | [![baidudisk](./../image_source/baidudisk.jpg)]() | 75.31/ 92.48 | 0.017    | 5.48M   | 219.8M     | [official](https://github.com/xiaomi-automl/MoGA) |      |
+| peleenet            | [![baidudisk](./../image_source/baidudisk.jpg)]() | 72.08/ 90.64 | 0.025    | 2.80M   | 507.0M     | [official](https://github.com/Robert-JunWang/PeleeNet) |      |
+| proxylessnas_cpu    | [![baidudisk](./../image_source/baidudisk.jpg)]() | 75.29/ 92.39 | 0.015    | 4.36M   | 437.8M     | [official](https://github.com/mit-han-lab/ProxylessNAS/tree/master) |      |
+| proxylessnas_gpu    | [![baidudisk](./../image_source/baidudisk.jpg)]() | 75.08/ 92.53 | 0.011    | 7.11M   | 463.5M     | [official](https://github.com/mit-han-lab/ProxylessNAS/tree/master) |      |
+| proxylessnas_mobile | [![baidudisk](./../image_source/baidudisk.jpg)]() | 74.59/ 92.20 | 0.014    | 4.08M   | 319.1M     | [official](https://github.com/mit-han-lab/ProxylessNAS/tree/master) |      |
+| resnet18b           | [![baidudisk](./../image_source/baidudisk.jpg)]() | 69.75/ 89.07 | 0.007    | 11.68M  | 1813.5M    | [torchvision](https://github.com/pytorch/vision) |      |
+| resnet34b           | [![baidudisk](./../image_source/baidudisk.jpg)]() | 73.31/ 91.42 | 0.013    | 21.79M  | 3663.2M    | [torchvision](https://github.com/pytorch/vision) |      |
+| resnet50a           | [![baidudisk](./../image_source/baidudisk.jpg)]() | 61.30/ 84.18 | 0.014    | 25.55M  | 3855.9M    | [caffe](https://github.com/KaimingHe/deep-residual-networks) |       |
+| resnet50b-gn        | [![baidudisk](./../image_source/baidudisk.jpg)]() | 59.91/ 83.61 | 0.017    | 25.55M  | 4087.1M    | [caffe2](https://github.com/facebookresearch/Detectron/tree/master/projects/GN) |      |
+| resnet50b_128d      | [![baidudisk](./../image_source/baidudisk.jpg)]() | 78.46/ 94.08 | 0.017    | 68.88M  | 11395.9M   | [torchvision](https://github.com/pytorch/vision) |      |
+| resnet50b           | [![baidudisk](./../image_source/baidudisk.jpg)]() | 76.13/ 92.86 | 0.017    | 25.55M  | 4087.1M    | [torchvision](https://github.com/pytorch/vision) |      |
+| resnet101a          | [![baidudisk](./../image_source/baidudisk.jpg)]() | 63.10/ 85.57 | 0.029    | 44.54M  | 7568.1M    | [caffe](https://github.com/KaimingHe/deep-residual-networks) |      |
+| resnet101b_128d     | [![baidudisk](./../image_source/baidudisk.jpg)]() | 78.84/ 94.28 | 0.025    | 126.88M | 22751.0M   | [torchvision](https://github.com/pytorch/vision) |      |
+| resnet101b          | [![baidudisk](./../image_source/baidudisk.jpg)]() | 77.37/ 93.54 | 0.027    | 44.54M  | 7799.3M    | [torchvision](https://github.com/pytorch/vision) |      |
+| resnet152a          | [![baidudisk](./../image_source/baidudisk.jpg)]() | 63.12/ 85.61 | 0.041    | 60.19M  | 11280.3M   | [caffe](https://github.com/KaimingHe/deep-residual-networks) |      |
+| resnet152b          | [![baidudisk](./../image_source/baidudisk.jpg)]() | 78.31/ 94.04 | 0.042    | 60.19M  | 11511.5M   | [torchvision](https://github.com/pytorch/vision) |      |
+| resnext50b_32x4d    | [![baidudisk](./../image_source/baidudisk.jpg)]() | 77.61/ 93.69 | 0.022    | 25.02M  | 4228.4M    | [torchvision](https://github.com/pytorch/vision) |      |
+| resnext101b_32x16d  | [![baidudisk](./../image_source/baidudisk.jpg)]() | 84.17/ 97.19 | 0.042    | 194.02M | 36161.24M  | [wsp](https://github.com/facebookresearch/WSL-Images) |      |
+| resnext101b_32x32d  | [![baidudisk](./../image_source/baidudisk.jpg)]() | 85.09/ 97.43 | 0.043    | 468.53M | 87104.73M  | [wsp](https://github.com/facebookresearch/WSL-Images) |      |
+| resnext101b_32x48d  | [![baidudisk](./../image_source/baidudisk.jpg)]() | 85.44/ 97.57 | 0.046    | 828.41M | 153308.15M | [official](https://github.com/facebookresearch/WSL-Images) |      |
+| resnext101b_32x4d   | [![baidudisk](./../image_source/baidudisk.jpg)]() | 78.18/ 93.88 | 0.039    | 44.17M  | 7967.9M    | [official](https://github.com/facebookresearch/ResNeXt) |      |
+| resnext101b_32x8d   | [![baidudisk](./../image_source/baidudisk.jpg)]() | 79.31/ 94.52 | 0.039    | 88.79M  | 16411.96M  | [torchvision](https://github.com/pytorch/vision) |      |
+| resnext101b_32x8d   | [![baidudisk](./../image_source/baidudisk.jpg)]() | 82.68/ 96.63 | 0.034    | 88.79M  | 16411.96M  | [wsp](https://github.com/facebookresearch/WSL-Images) |        |
+| resnext101b_64x4d   | [![baidudisk](./../image_source/baidudisk.jpg)]() | 78.95/ 94.25 | 0.057    | 83.45M  | 15458.2M   | [official](https://github.com/facebookresearch/ResNeXt) |      |
+| se_resnext26b_32x4d | [![baidudisk](./../image_source/baidudisk.jpg)]() | 76.55/ 93.06 | 0.016    | 16.79M  | 2468.6M    | [rwightman](https://github.com/rwightman/pytorch-image-models) |      |
+| shufflenet_v2_0.5   | [![baidudisk](./../image_source/baidudisk.jpg)]() | 60.63/ 82.23 | 0.015    | 1.36M   | 39.45M     | [official](https://github.com/megvii-model/ShuffleNet-Series) |      |
+| shufflenet_v2_1.0   | [![baidudisk](./../image_source/baidudisk.jpg)]() | 69.11/ 88.49 | 0.015    | 2.27M   | 144.8M     | [official](https://github.com/megvii-model/ShuffleNet-Series) |      |
+| shufflenet_v2_1.5   | [![baidudisk](./../image_source/baidudisk.jpg)]() | 72.34/ 90.37 | 0.016    | 3.50M   | 297.9M     | [official](https://github.com/megvii-model/ShuffleNet-Series) |      |
+| shufflenet_v2_2.0   | [![baidudisk](./../image_source/baidudisk.jpg)]() | 74.90/ 92.27 | 0.015    | 7.40M   | 588.7M     | [official](https://github.com/megvii-model/ShuffleNet-Series) |      |
+| spnasnet            | [![baidudisk](./../image_source/baidudisk.jpg)]() | 74.08/ 91.83 | 0.016    | 4.42M   | 332.1M     | [rwightman](https://github.com/rwightman/pytorch-image-models) |      |
+| vgg11               | [![baidudisk](./../image_source/baidudisk.jpg)]() | 69.02/ 88.62 | 0.004    | 132.8M  | 7485.4M    | [torchvision](https://github.com/pytorch/vision) |      |
+| vgg11bn             | [![baidudisk](./../image_source/baidudisk.jpg)]() | 70.37/ 89.81 | 0.005    | 132.8M  | 7485.4M    | [torchvision](https://github.com/pytorch/vision) |        |
+| vgg13               | [![baidudisk](./../image_source/baidudisk.jpg)]() | 69.92/ 89.24 | 0.004    | 133.0M  | 11184.8M   | [torchvision](https://github.com/pytorch/vision) |      |
+| vgg13bn             | [![baidudisk](./../image_source/baidudisk.jpg)]() | 71.58/ 90.37 | 0.005    | 133.0M  | 11184.8M   | [torchvision](https://github.com/pytorch/vision) |      |
+| vgg16               | [![baidudisk](./../image_source/baidudisk.jpg)]() | 71.59/ 90.38 | 0.005    | 138.3M  | 15346.6M   | [torchvision](https://github.com/pytorch/vision) |      |
+| vgg16bn             | [![baidudisk](./../image_source/baidudisk.jpg)]() | 73.36/ 91.51 | 0.006    | 138.3M  | 15346.6M   | [torchvision](https://github.com/pytorch/vision) |      |
+| vgg19               | [![baidudisk](./../image_source/baidudisk.jpg)]() | 72.37/ 90.87 | 0.005    | 143.6M  | 19508.4M   | [torchvision](https://github.com/pytorch/vision) |      |
+| vgg19bn             | [![baidudisk](./../image_source/baidudisk.jpg)]() | 74.21/ 91.84 | 0.007    | 143.6M  | 19508.4M   | [torchvision](https://github.com/pytorch/vision) |      |
+| vovnet37            | [![baidudisk](./../image_source/baidudisk.jpg)]() | 76.77/ 93.43 | 0.013    | 22.60M  | 7071.2M    | [stigma](https://github.com/stigma0617/VoVNet.pytorch) |      |
+| vovnet57            | [![baidudisk](./../image_source/baidudisk.jpg)]() | 77.73/ 93.71 | 0.018    | 36.64M  | 8929.1M    | [stigma](https://github.com/stigma0617/VoVNet.pytorch) |      |
+| xception            | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/1AP2fXDwOdF2nOkEzabGXVA) | 78.88/ 94.29 | 0.013    | 22.85M  | 8355.3M    | [cadene](https://github.com/Cadene/pretrained-models.pytorch) |      |
 
