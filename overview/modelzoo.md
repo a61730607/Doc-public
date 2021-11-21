@@ -21,9 +21,8 @@
 | resnext101d_32x4d                   | 79.17/ 94.44 | 0.038    | 25.04M  | 4468.07M   | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/1y9XMeemR4Qy4rYC11Uawig) |
 | resnext50d_32x4d                    | 80.45/ 95.13 | 0.024    | 25.04M  | 4468.07M   | [![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/11cm-eIk9FP67Wy-RowPhWg) |
 
-以下数据为第三方模型数据
 
-（模型合集下载链接：[![baidudisk](./../image_source/baidudisk.jpg)](https://pan.baidu.com/s/1xWr-Yy1Qkg_1pVzKaLMGqA)， 提取码：priv）
+以下数据为第三方模型数据
 
 | Network             | Top1/Top5    | speed(s) | Params  | Flops      | source      | downlowd（提取码priv） |
 | ------------------ | ----------- | ------- | ------ | --------- | ---------- | ------- |
